@@ -1,17 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>JSONS PROJECT MANAGER</title>
 
 <style>
-
-/* =========================================================
-   ROOT
-========================================================= */
 
 :root {
     --orange: #D94E2B;
@@ -22,11 +17,6 @@
     --border: #dddddd;
     --muted: #666666;
 }
-
-
-/* =========================================================
-   GLOBAL
-========================================================= */
 
 * {
     box-sizing: border-box;
@@ -52,13 +42,10 @@ body {
 .watermark {
     position: fixed;
     inset: 0;
-
     display: flex;
     justify-content: center;
     align-items: center;
-
     pointer-events: none;
-
     z-index: 0;
     overflow: hidden;
 }
@@ -66,9 +53,7 @@ body {
 .watermark img {
     width: min(850px, 85vw);
     max-height: 80vh;
-
     object-fit: contain;
-
     opacity: 0.20;
 }
 
@@ -100,23 +85,16 @@ header {
 .brand {
     font-size: 14px;
     font-weight: 700;
-
     letter-spacing: 3px;
-
     color: var(--orange);
-
     text-transform: uppercase;
 }
 
 h1 {
     margin: 10px 0 0;
-
     font-size: clamp(34px, 6vw, 64px);
-
     line-height: 1;
-
     font-weight: 900;
-
     letter-spacing: -2px;
 }
 
@@ -126,9 +104,7 @@ h1 span {
 
 .subtitle {
     margin-top: 15px;
-
     color: #555;
-
     font-size: 16px;
 }
 
@@ -143,37 +119,26 @@ h1 span {
 
 .section-title {
     display: flex;
-
     align-items: center;
-
     gap: 15px;
-
     margin-bottom: 22px;
 }
 
 .section-number {
     width: 38px;
     height: 38px;
-
     flex: 0 0 38px;
-
     background: var(--orange);
-
     color: white;
-
     border-radius: 50%;
-
     display: flex;
-
     justify-content: center;
     align-items: center;
-
     font-weight: 800;
 }
 
 .section-title h2 {
     margin: 0;
-
     font-size: 25px;
 }
 
@@ -184,39 +149,28 @@ h1 span {
 
 .form-card {
     background: rgba(255,255,255,0.96);
-
     border: 1px solid var(--border);
-
     border-radius: 16px;
-
     padding: 30px;
-
     box-shadow: 0 10px 40px rgba(0,0,0,0.04);
 }
 
 .grid {
     display: grid;
-
     grid-template-columns: repeat(2, 1fr);
-
     gap: 22px;
 }
 
 .field {
     display: flex;
-
     flex-direction: column;
-
     gap: 8px;
 }
 
 label {
     font-size: 13px;
-
     font-weight: 800;
-
     text-transform: uppercase;
-
     letter-spacing: 1px;
 }
 
@@ -226,40 +180,28 @@ label span {
 
 input {
     width: 100%;
-
     padding: 15px 16px;
-
     border: 1px solid #ccc;
-
     border-radius: 9px;
-
     background: white;
-
     color: black;
-
     font-size: 16px;
-
     outline: none;
 }
 
 input:focus {
     border-color: var(--orange);
-
-    box-shadow:
-        0 0 0 3px rgba(217,78,43,0.12);
+    box-shadow: 0 0 0 3px rgba(217,78,43,0.12);
 }
 
 input[readonly] {
     background: #eeeeee;
-
     color: #555;
-
     cursor: not-allowed;
 }
 
 .date-help {
     color: #777;
-
     font-size: 12px;
 }
 
@@ -270,51 +212,36 @@ input[readonly] {
 
 .plans {
     display: grid;
-
     grid-template-columns: repeat(3, 1fr);
-
     gap: 18px;
 }
 
 .plan-radio {
     position: absolute;
-
     opacity: 0;
-
     pointer-events: none;
 }
 
 .plan-label {
     display: block;
-
     border: 2px solid #ddd;
-
     border-radius: 15px;
-
     padding: 25px;
-
     cursor: pointer;
-
     background: white;
-
     transition: 0.2s ease;
-
     height: 100%;
 }
 
 .plan-label:hover {
     border-color: var(--orange);
-
     transform: translateY(-2px);
 }
 
 .plan-name {
     display: flex;
-
     justify-content: space-between;
-
     align-items: center;
-
     gap: 10px;
 }
 
@@ -325,47 +252,34 @@ input[readonly] {
 .radio-circle {
     width: 22px;
     height: 22px;
-
     border: 2px solid #aaa;
-
     border-radius: 50%;
-
     position: relative;
 }
 
 .plan-price {
     margin-top: 12px;
-
     font-size: 27px;
-
     font-weight: 900;
-
     color: var(--orange);
 }
 
 .plan-price small {
     color: #777;
-
     font-size: 13px;
-
     font-weight: 500;
 }
 
 .plan-description {
     margin-top: 10px;
-
     color: #666;
-
     font-size: 14px;
 }
 
 .plan-radio:checked + .plan-label {
     border-color: var(--orange);
-
     background: #fff8f5;
-
-    box-shadow:
-        0 8px 25px rgba(217,78,43,0.10);
+    box-shadow: 0 8px 25px rgba(217,78,43,0.10);
 }
 
 .plan-radio:checked + .plan-label .radio-circle {
@@ -374,16 +288,11 @@ input[readonly] {
 
 .plan-radio:checked + .plan-label .radio-circle::after {
     content: "";
-
     position: absolute;
-
     width: 10px;
     height: 10px;
-
     background: var(--orange);
-
     border-radius: 50%;
-
     top: 4px;
     left: 4px;
 }
@@ -393,53 +302,41 @@ input[readonly] {
    BUTTONS
 ========================================================= */
 
-button {
-    font-family: inherit;
-}
-
 .submit-area {
     margin-top: 30px;
-
     text-align: center;
+}
+
+button {
+    font-family: inherit;
 }
 
 .submit-button,
 .pdf-button,
 .reset-button {
     border: 0;
-
     border-radius: 10px;
-
     padding: 16px 28px;
-
     font-size: 15px;
-
     font-weight: 800;
-
     letter-spacing: 0.5px;
-
     cursor: pointer;
-
     transition: 0.2s ease;
 }
 
 .submit-button {
     background: var(--orange);
-
     color: white;
-
     min-width: 260px;
 }
 
 .submit-button:hover {
     background: var(--orange-dark);
-
     transform: translateY(-1px);
 }
 
 .pdf-button {
     background: var(--black);
-
     color: white;
 }
 
@@ -449,7 +346,6 @@ button {
 
 .reset-button {
     background: #eeeeee;
-
     color: #111;
 }
 
@@ -459,13 +355,9 @@ button {
 
 .button-row {
     display: flex;
-
     justify-content: center;
-
     align-items: center;
-
     gap: 12px;
-
     flex-wrap: wrap;
 }
 
@@ -476,21 +368,13 @@ button {
 
 .error-message {
     display: none;
-
     margin-top: 18px;
-
     padding: 14px 16px;
-
     border-radius: 9px;
-
     background: #fff0ec;
-
     border: 1px solid #e9a28f;
-
     color: #9e3018;
-
     font-size: 14px;
-
     font-weight: 700;
 }
 
@@ -513,67 +397,41 @@ button {
 
 .workflow-document {
     position: relative;
-
     background: rgba(255,255,255,0.96);
-
     border: 1px solid #ddd;
-
     border-radius: 18px;
-
     overflow: hidden;
-
-    box-shadow:
-        0 15px 50px rgba(0,0,0,0.06);
+    box-shadow: 0 15px 50px rgba(0,0,0,0.06);
 }
-
-
-/* =========================================================
-   DOCUMENT HEADER
-========================================================= */
 
 .document-header {
     background: var(--black);
-
     color: white;
-
     padding: 42px 35px;
-
     position: relative;
 }
 
 .document-header::after {
     content: "";
-
     position: absolute;
-
     left: 0;
-
     bottom: 0;
-
     width: 150px;
-
     height: 5px;
-
     background: var(--orange);
 }
 
 .document-brand {
     color: var(--orange);
-
     font-size: 13px;
-
     font-weight: 900;
-
     letter-spacing: 3px;
 }
 
 .document-title {
     margin: 8px 0 0;
-
     font-size: clamp(30px, 5vw, 50px);
-
     line-height: 1.05;
-
     font-weight: 900;
 }
 
@@ -581,37 +439,21 @@ button {
     color: var(--orange);
 }
 
-
-/* =========================================================
-   DOCUMENT BODY
-========================================================= */
-
 .document-body {
     padding: 35px;
 }
 
-
-/* =========================================================
-   CLIENT INFORMATION
-========================================================= */
-
 .client-info {
     display: grid;
-
     grid-template-columns: repeat(2, 1fr);
-
     border: 1px solid #ddd;
-
     border-radius: 13px;
-
     overflow: hidden;
-
     margin-bottom: 30px;
 }
 
 .client-item {
     padding: 18px 20px;
-
     border-bottom: 1px solid #ddd;
 }
 
@@ -625,79 +467,49 @@ button {
 
 .client-label {
     font-size: 10px;
-
     text-transform: uppercase;
-
     letter-spacing: 1.5px;
-
     color: #777;
-
     font-weight: 900;
 }
 
 .client-value {
     margin-top: 4px;
-
     font-size: 17px;
-
     font-weight: 800;
 }
 
-
-/* =========================================================
-   PLAN BANNER
-========================================================= */
-
 .plan-banner {
     padding: 22px;
-
     border-radius: 13px;
-
     background: #fff4ef;
-
     border-left: 5px solid var(--orange);
-
     margin-bottom: 30px;
 }
 
 .plan-banner-label {
     font-size: 11px;
-
     text-transform: uppercase;
-
     letter-spacing: 2px;
-
     font-weight: 900;
-
     color: #777;
 }
 
 .plan-banner-name {
     margin-top: 4px;
-
     font-size: 27px;
-
     font-weight: 900;
-
     color: var(--orange);
 }
 
 .plan-banner-price {
     font-size: 14px;
-
     color: #555;
 }
 
-
-/* =========================================================
-   WORKFLOW
-========================================================= */
-
 .workflow-heading {
     font-size: 27px;
-
     font-weight: 900;
-
     margin: 30px 0 18px;
 }
 
@@ -707,31 +519,22 @@ button {
 
 .week {
     border: 1px solid #ddd;
-
     border-radius: 13px;
-
     margin-bottom: 16px;
-
     padding: 25px;
-
     background: white;
-
     break-inside: avoid;
 }
 
 .week-title {
     color: var(--orange);
-
     font-size: 20px;
-
     font-weight: 900;
-
     margin-bottom: 13px;
 }
 
 .week ul {
     padding-left: 21px;
-
     margin: 0;
 }
 
@@ -743,45 +546,25 @@ button {
     margin-bottom: 0;
 }
 
-
-/* =========================================================
-   TOTAL
-========================================================= */
-
 .total {
     margin-top: 25px;
-
     padding: 20px;
-
     background: var(--orange);
-
     color: white;
-
     border-radius: 12px;
-
     font-weight: 800;
 }
 
-
-/* =========================================================
-   DOCUMENT FOOTER
-========================================================= */
-
 .document-footer {
     margin-top: 35px;
-
     padding-top: 28px;
-
     border-top: 2px solid var(--orange);
-
     text-align: center;
 }
 
 .document-footer .grow {
     color: var(--orange);
-
     font-size: 26px;
-
     font-weight: 900;
 }
 
@@ -800,17 +583,11 @@ button {
 
 .pdf-area {
     display: none;
-
     margin: 30px 0 70px;
-
     padding: 30px;
-
     border: 2px dashed var(--orange);
-
     border-radius: 15px;
-
     text-align: center;
-
     background: #fffaf8;
 }
 
@@ -820,7 +597,6 @@ button {
 
 .pdf-area h3 {
     margin-top: 0;
-
     font-size: 22px;
 }
 
@@ -835,21 +611,15 @@ button {
 
 footer {
     background: black;
-
     color: white;
-
     padding: 45px 0;
-
     text-align: center;
-
     margin-top: 60px;
 }
 
 footer .grow {
     color: var(--orange);
-
     font-size: 28px;
-
     font-weight: 900;
 }
 
@@ -911,179 +681,117 @@ footer strong {
 
 /* =========================================================
    PRINT / PDF
+
+   IMPORTANT:
+   No logo is added here.
+   The watermark is also hidden.
 ========================================================= */
 
 @media print {
 
-    @page {
-        size: A4;
-        margin: 15mm;
-    }
-
     body {
-        background: white !important;
-        color: black !important;
+        background: white;
+        color: black;
     }
 
-    /* -----------------------------------------------------
-       HIDE NORMAL WEBSITE ELEMENTS
-    ----------------------------------------------------- */
-
-    .watermark,
-    header,
-    main > .section:not(#generatedSection),
-    #pdfArea,
-    footer {
+    /* Hide the large website watermark in PDF */
+    .watermark {
         display: none !important;
     }
 
-    /* -----------------------------------------------------
-       SHOW ONLY GENERATED WORKFLOW
-    ----------------------------------------------------- */
-
-    #generatedSection {
-        display: block !important;
-
-        margin: 0 !important;
+    /* Hide buttons and PDF controls */
+    .submit-area,
+    .pdf-area {
+        display: none !important;
     }
 
+    /* Hide the generated workflow section title */
     #generatedSection > .section-title {
         display: none !important;
     }
 
-    #generatedResult {
-        display: block !important;
-
-        visibility: visible !important;
-
-        border: 0 !important;
-
-        box-shadow: none !important;
-
-        border-radius: 0 !important;
-
-        overflow: visible !important;
-
-        background: white !important;
+    /* Remove website-only decorative elements */
+    header {
+        padding-top: 20px;
     }
 
-    /* -----------------------------------------------------
-       LOGO - TOP RIGHT OF PDF
-    ----------------------------------------------------- */
-
-    body::before {
-        content: "";
-
-        position: fixed;
-
-        top: 8mm;
-
-        right: 10mm;
-
-        width: 35mm;
-
-        height: 22mm;
-
-        background-image: url("logo.png");
-
-        background-repeat: no-repeat;
-
-        background-position: center;
-
-        background-size: contain;
-
-        opacity: 1;
-
-        z-index: 9999;
+    /* Make generated document suitable for printing */
+    .workflow-document {
+        border: 0;
+        border-radius: 0;
+        box-shadow: none;
+        overflow: visible;
     }
-
-    /* -----------------------------------------------------
-       DOCUMENT HEADER
-    ----------------------------------------------------- */
 
     .document-header {
-        background: white !important;
-
-        color: black !important;
-
-        padding: 20mm 0 8mm !important;
-
-        border-bottom: 3px solid var(--orange);
+        border-radius: 0;
     }
-
-    .document-header::after {
-        display: none;
-    }
-
-    .document-brand {
-        color: var(--orange) !important;
-    }
-
-    .document-title {
-        color: black !important;
-    }
-
-    .document-title span {
-        color: var(--orange) !important;
-    }
-
-    /* -----------------------------------------------------
-       DOCUMENT BODY
-    ----------------------------------------------------- */
-
-    .document-body {
-        padding: 8mm 0 0 !important;
-    }
-
-    /* -----------------------------------------------------
-       KEEP IMPORTANT BLOCKS TOGETHER
-    ----------------------------------------------------- */
 
     .week {
         break-inside: avoid;
-
-        page-break-inside: avoid;
-
-        box-shadow: none !important;
     }
 
-    .client-info {
-        break-inside: avoid;
-
-        page-break-inside: avoid;
-    }
-
-    .plan-banner {
-        break-inside: avoid;
-
-        page-break-inside: avoid;
-    }
-
-    .total {
-        break-inside: avoid;
-
-        page-break-inside: avoid;
-    }
-
-    .document-footer {
-        break-inside: avoid;
-
-        page-break-inside: avoid;
-    }
-
-    .workflow-document {
-        box-shadow: none !important;
+    /* Footer print styling */
+    footer {
+        color: black;
+        background: white;
+        border-top: 2px solid var(--orange);
     }
 
 }
 
 
 /* =========================================================
-   END CSS
+   EXTRA PRINT PAGE SETTINGS
 ========================================================= */
 
-</style>
+@page {
+    size: A4;
+    margin: 12mm;
+}
 
+@media print {
+
+    .app {
+        width: 100%;
+    }
+
+    main.container {
+        width: 100%;
+        max-width: none;
+    }
+
+    #generatedSection {
+        margin: 0;
+    }
+
+    .document-body {
+        padding: 25px 0;
+    }
+
+    .document-header {
+        padding: 30px 25px;
+    }
+
+    .client-info {
+        break-inside: avoid;
+    }
+
+    .plan-banner {
+        break-inside: avoid;
+    }
+
+    .total {
+        break-inside: avoid;
+    }
+
+    .document-footer {
+        break-inside: avoid;
+    }
+
+}
+
+</style>
 </head>
 
 
@@ -1091,9 +799,10 @@ footer strong {
 
 
 <!-- ========================================================
-     WEBSITE WATERMARK
-     
-     Keep logo.png in the same folder as index.html
+     LOGO WATERMARK
+
+     Put your logo in the same GitHub repository and name it:
+     logo.png
 ========================================================= -->
 
 <div class="watermark">
@@ -1105,10 +814,6 @@ footer strong {
 
 </div>
 
-
-<!-- ========================================================
-     APPLICATION
-========================================================= -->
 
 <div class="app">
 
@@ -1138,15 +843,10 @@ footer strong {
     </header>
 
 
-    <!-- ====================================================
-         MAIN
-    ===================================================== -->
-
     <main class="container">
 
 
         <!-- =================================================
-             SECTION 01
              CLIENT INFORMATION
         ================================================== -->
 
@@ -1170,8 +870,6 @@ footer strong {
                 <div class="grid">
 
 
-                    <!-- CLIENT NAME -->
-
                     <div class="field">
 
                         <label for="clientName">
@@ -1187,8 +885,6 @@ footer strong {
 
                     </div>
 
-
-                    <!-- POC -->
 
                     <div class="field">
 
@@ -1206,8 +902,6 @@ footer strong {
                     </div>
 
 
-                    <!-- MOBILE -->
-
                     <div class="field">
 
                         <label for="mobile">
@@ -1224,8 +918,6 @@ footer strong {
                     </div>
 
 
-                    <!-- EMAIL -->
-
                     <div class="field">
 
                         <label for="email">
@@ -1241,6 +933,7 @@ footer strong {
 
                     </div>
 
+
                 </div>
 
             </div>
@@ -1249,7 +942,6 @@ footer strong {
 
 
         <!-- =================================================
-             SECTION 02
              PROJECT DATES
         ================================================== -->
 
@@ -1273,8 +965,6 @@ footer strong {
                 <div class="grid">
 
 
-                    <!-- START DATE -->
-
                     <div class="field">
 
                         <label for="startDate">
@@ -1288,8 +978,6 @@ footer strong {
 
                     </div>
 
-
-                    <!-- END DATE -->
 
                     <div class="field">
 
@@ -1310,6 +998,7 @@ footer strong {
 
                     </div>
 
+
                 </div>
 
             </div>
@@ -1318,7 +1007,6 @@ footer strong {
 
 
         <!-- =================================================
-             SECTION 03
              PLAN SELECTION
         ================================================== -->
 
@@ -1340,9 +1028,7 @@ footer strong {
             <div class="plans">
 
 
-                <!-- =================================================
-                     BASIC PLAN
-                ================================================== -->
+                <!-- BASIC -->
 
                 <div>
 
@@ -1394,9 +1080,7 @@ footer strong {
                 </div>
 
 
-                <!-- =================================================
-                     ADVANCED PLAN
-                ================================================== -->
+                <!-- ADVANCED -->
 
                 <div>
 
@@ -1447,9 +1131,7 @@ footer strong {
                 </div>
 
 
-                <!-- =================================================
-                     PREMIUM PLAN
-                ================================================== -->
+                <!-- PREMIUM -->
 
                 <div>
 
@@ -1499,18 +1181,15 @@ footer strong {
 
                 </div>
 
+
             </div>
 
-
-            <!-- ERROR -->
 
             <div
                 id="errorMessage"
                 class="error-message"
             ></div>
 
-
-            <!-- GENERATE -->
 
             <div class="submit-area">
 
@@ -1528,8 +1207,7 @@ footer strong {
 
 
         <!-- =================================================
-             SECTION 04
-             GENERATED WORKFLOW
+             GENERATED RESULT
         ================================================== -->
 
         <section
@@ -1556,7 +1234,8 @@ footer strong {
                 class="workflow-document"
             >
 
-                <!-- JavaScript generates workflow here -->
+                <!-- JavaScript inserts the generated
+                     client document here. -->
 
             </div>
 
@@ -1584,6 +1263,7 @@ footer strong {
 
             <div class="button-row">
 
+
                 <button
                     type="button"
                     class="pdf-button"
@@ -1601,15 +1281,17 @@ footer strong {
                     CREATE NEW PROJECT
                 </button>
 
+
             </div>
 
         </div>
+
 
     </main>
 
 
     <!-- ====================================================
-         WEBSITE FOOTER
+         FOOTER
     ===================================================== -->
 
     <footer>
@@ -1621,8 +1303,13 @@ footer strong {
             </div>
 
             <p>
+
                 Contact us :
-                <strong>8610817060</strong>
+
+                <strong>
+                    8610817060
+                </strong>
+
             </p>
 
         </div>
@@ -1633,11 +1320,14 @@ footer strong {
 </div>
 
 
-<!-- ========================================================
-     JAVASCRIPT
-========================================================= -->
 
 <script>
+
+/* =========================================================
+   JSONS PROJECT MANAGER
+   Vanilla JavaScript
+   No framework / no backend
+========================================================= */
 
 
 /* =========================================================
@@ -1646,10 +1336,6 @@ footer strong {
 
 const workflows = {
 
-
-    /* =====================================================
-       BASIC
-    ===================================================== */
 
     basic: {
 
@@ -1663,6 +1349,7 @@ const workflows = {
         weeks: [
 
             {
+
                 title:
                     "Week 1 — Setup & Content Planning",
 
@@ -1681,10 +1368,12 @@ const workflows = {
                     "Set up or review basic chat automation for common customer questions."
 
                 ]
+
             },
 
 
             {
+
                 title:
                     "Week 2 — Consistent Content & Engagement",
 
@@ -1703,10 +1392,12 @@ const workflows = {
                     "Make minor content adjustments based on engagement."
 
                 ]
+
             },
 
 
             {
+
                 title:
                     "Week 3 — Engagement & Content Improvement",
 
@@ -1725,10 +1416,12 @@ const workflows = {
                     "Review which content is performing better."
 
                 ]
+
             },
 
 
             {
+
                 title:
                     "Week 4 — Final Content & Monthly Review",
 
@@ -1747,16 +1440,13 @@ const workflows = {
                     "Identify the best-performing posts/Reels and prepare ideas for the next month."
 
                 ]
+
             }
 
         ]
 
     },
 
-
-    /* =====================================================
-       ADVANCED
-    ===================================================== */
 
     advanced: {
 
@@ -1770,6 +1460,7 @@ const workflows = {
         weeks: [
 
             {
+
                 title:
                     "Week 1 — Strategy, Content & Lead Setup",
 
@@ -1794,10 +1485,12 @@ const workflows = {
                     "Set up the lead management process."
 
                 ]
+
             },
 
 
             {
+
                 title:
                     "Week 2 — Content + Advertising + Leads",
 
@@ -1820,10 +1513,12 @@ const workflows = {
                     "Review chat automation performance."
 
                 ]
+
             },
 
 
             {
+
                 title:
                     "Week 3 — Performance Optimization",
 
@@ -1846,10 +1541,12 @@ const workflows = {
                     "Adjust upcoming content based on performance."
 
                 ]
+
             },
 
 
             {
+
                 title:
                     "Week 4 — Final Content + Monthly Reporting",
 
@@ -1872,16 +1569,13 @@ const workflows = {
                     "Prepare the next month's content and advertising recommendations."
 
                 ]
+
             }
 
         ]
 
     },
 
-
-    /* =====================================================
-       PREMIUM
-    ===================================================== */
 
     premium: {
 
@@ -1895,6 +1589,7 @@ const workflows = {
         weeks: [
 
             {
+
                 title:
                     "Week 1 — Strategy + Website Planning",
 
@@ -1921,10 +1616,12 @@ const workflows = {
                     "Website/Webpage: collect required business information, images, logo, services, contact details and decide the website structure."
 
                 ]
+
             },
 
 
             {
+
                 title:
                     "Week 2 — Content + Website Development",
 
@@ -1947,10 +1644,12 @@ const workflows = {
                     "Website/Webpage: develop the main pages/sections such as Home, About, Services, Contact, etc."
 
                 ]
+
             },
 
 
             {
+
                 title:
                     "Week 3 — Optimization + Website Review",
 
@@ -1975,10 +1674,12 @@ const workflows = {
                     "Share the website draft for review and collect required corrections."
 
                 ]
+
             },
 
 
             {
+
                 title:
                     "Week 4 — Finalization + Monthly Review",
 
@@ -2003,6 +1704,7 @@ const workflows = {
                     "Review overall monthly performance and plan the next month's marketing activities."
 
                 ]
+
             }
 
         ]
@@ -2072,13 +1774,15 @@ startDate.addEventListener(
         }
 
 
+        /*
+           END DATE = START DATE + 30 DAYS
+        */
+
         const date =
             new Date(
                 this.value + "T00:00:00"
             );
 
-
-        /* START DATE + 30 DAYS */
 
         date.setDate(
             date.getDate() + 30
@@ -2118,7 +1822,7 @@ function formatDateForInput(date) {
 
 
 /* =========================================================
-   FORMAT DATE FOR DISPLAY
+   DISPLAY DATE
 ========================================================= */
 
 function formatDisplayDate(value) {
@@ -2204,7 +1908,125 @@ function escapeHTML(value) {
 
 
 /* =========================================================
-   ERROR
+   VALIDATION
+========================================================= */
+
+function validateForm() {
+
+    errorMessage.classList.remove(
+        "show"
+    );
+
+    errorMessage.textContent = "";
+
+
+    if (!clientName.value.trim()) {
+
+        showError(
+            "Please enter the Client Name."
+        );
+
+        clientName.focus();
+
+        return false;
+
+    }
+
+
+    if (!pocName.value.trim()) {
+
+        showError(
+            "Please enter the POC Name."
+        );
+
+        pocName.focus();
+
+        return false;
+
+    }
+
+
+    if (!mobile.value.trim()) {
+
+        showError(
+            "Please enter the Mobile Number."
+        );
+
+        mobile.focus();
+
+        return false;
+
+    }
+
+
+    if (!email.value.trim()) {
+
+        showError(
+            "Please enter the Email Address."
+        );
+
+        email.focus();
+
+        return false;
+
+    }
+
+
+    if (!email.validity.valid) {
+
+        showError(
+            "Please enter a valid Email Address."
+        );
+
+        email.focus();
+
+        return false;
+
+    }
+
+
+    if (!startDate.value) {
+
+        showError(
+            "Please select the Project Start Date."
+        );
+
+        startDate.focus();
+
+        return false;
+
+    }
+
+
+    if (!endDate.value) {
+
+        showError(
+            "The Project End Date could not be calculated."
+        );
+
+        return false;
+
+    }
+
+
+    if (!getSelectedPlan()) {
+
+        showError(
+            "Please select a plan."
+        );
+
+        return false;
+
+    }
+
+
+    return true;
+
+}
+
+
+/* =========================================================
+   SHOW ERROR
 ========================================================= */
 
 function showError(message) {
@@ -2229,116 +2051,6 @@ function showError(message) {
         behavior: "smooth"
 
     });
-
-}
-
-
-/* =========================================================
-   VALIDATION
-========================================================= */
-
-function validateForm() {
-
-    errorMessage.classList.remove(
-        "show"
-    );
-
-    errorMessage.textContent = "";
-
-
-    if (!clientName.value.trim()) {
-
-        showError(
-            "Please enter the Client Name."
-        );
-
-        clientName.focus();
-
-        return false;
-    }
-
-
-    if (!pocName.value.trim()) {
-
-        showError(
-            "Please enter the POC Name."
-        );
-
-        pocName.focus();
-
-        return false;
-    }
-
-
-    if (!mobile.value.trim()) {
-
-        showError(
-            "Please enter the Mobile Number."
-        );
-
-        mobile.focus();
-
-        return false;
-    }
-
-
-    if (!email.value.trim()) {
-
-        showError(
-            "Please enter the Email Address."
-        );
-
-        email.focus();
-
-        return false;
-    }
-
-
-    if (!email.validity.valid) {
-
-        showError(
-            "Please enter a valid Email Address."
-        );
-
-        email.focus();
-
-        return false;
-    }
-
-
-    if (!startDate.value) {
-
-        showError(
-            "Please select the Project Start Date."
-        );
-
-        startDate.focus();
-
-        return false;
-    }
-
-
-    if (!endDate.value) {
-
-        showError(
-            "The Project End Date could not be calculated."
-        );
-
-        return false;
-    }
-
-
-    if (!getSelectedPlan()) {
-
-        showError(
-            "Please select a plan."
-        );
-
-        return false;
-    }
-
-
-    return true;
 
 }
 
@@ -2404,7 +2116,7 @@ generateButton.addEventListener(
 
 
         /* =================================================
-           BUILD WEEKS
+           BUILD WEEK HTML
         ================================================= */
 
         let weeksHTML = "";
@@ -2432,17 +2144,11 @@ generateButton.addEventListener(
                     <div class="week">
 
                         <div class="week-title">
-
-                            ${escapeHTML(
-                                week.title
-                            )}
-
+                            ${escapeHTML(week.title)}
                         </div>
 
                         <ul>
-
                             ${listHTML}
-
                         </ul>
 
                     </div>
@@ -2454,7 +2160,7 @@ generateButton.addEventListener(
 
 
         /* =================================================
-           BUILD DOCUMENT
+           BUILD COMPLETE DOCUMENT
         ================================================= */
 
         generatedResult.innerHTML = `
@@ -2466,10 +2172,7 @@ generateButton.addEventListener(
                 </div>
 
                 <div class="document-title">
-
-                    JSONS PROJECT
-                    <span>WORKFLOW</span>
-
+                    JSONS PROJECT <span>WORKFLOW</span>
                 </div>
 
             </div>
@@ -2477,8 +2180,6 @@ generateButton.addEventListener(
 
             <div class="document-body">
 
-
-                <!-- CLIENT INFORMATION -->
 
                 <div class="client-info">
 
@@ -2560,10 +2261,9 @@ generateButton.addEventListener(
 
                     </div>
 
+
                 </div>
 
-
-                <!-- SELECTED PLAN -->
 
                 <div class="plan-banner">
 
@@ -2572,25 +2272,15 @@ generateButton.addEventListener(
                     </div>
 
                     <div class="plan-banner-name">
-
-                        ${escapeHTML(
-                            plan.name
-                        )}
-
+                        ${escapeHTML(plan.name)}
                     </div>
 
                     <div class="plan-banner-price">
-
-                        ${escapeHTML(
-                            plan.price
-                        )}
-
+                        ${escapeHTML(plan.price)}
                     </div>
 
                 </div>
 
-
-                <!-- WORKFLOW HEADING -->
 
                 <div class="workflow-heading">
 
@@ -2603,32 +2293,21 @@ generateButton.addEventListener(
                 </div>
 
 
-                <!-- WEEKS -->
-
                 ${weeksHTML}
 
-
-                <!-- TOTAL -->
 
                 <div class="total">
 
                     Total:
-
-                    ${escapeHTML(
-                        plan.total
-                    )}
+                    ${escapeHTML(plan.total)}
 
                 </div>
 
 
-                <!-- DOCUMENT FOOTER -->
-
                 <div class="document-footer">
 
                     <div class="grow">
-
                         Ready to Grow Your Brand?
-
                     </div>
 
                     <p>
@@ -2650,17 +2329,15 @@ generateButton.addEventListener(
 
 
         /* =================================================
-           SHOW GENERATED RESULT
+           SHOW RESULT
         ================================================= */
 
         generatedResult.classList.add(
             "show"
         );
 
-
         generatedSection.style.display =
             "block";
-
 
         pdfArea.classList.add(
             "show"
@@ -2675,8 +2352,11 @@ generateButton.addEventListener(
             function () {
 
                 generatedSection.scrollIntoView({
+
                     behavior: "smooth",
+
                     block: "start"
+
                 });
 
             },
@@ -2688,7 +2368,7 @@ generateButton.addEventListener(
 
 
 /* =========================================================
-   SAVE AS PDF
+   PDF / PRINT
 ========================================================= */
 
 pdfButton.addEventListener(
@@ -2696,14 +2376,14 @@ pdfButton.addEventListener(
     function () {
 
         /*
-           Opens the browser print dialog.
+           Uses the browser's native print engine.
 
            Choose:
+           "Save as PDF"
 
-           Destination:
-           Save as PDF
-
-           Then click Save.
+           No external library.
+           No backend.
+           No upload.
         */
 
         window.print();
@@ -2729,7 +2409,6 @@ resetButton.addEventListener(
 
         email.value = "";
 
-
         startDate.value = "";
 
         endDate.value = "";
@@ -2740,8 +2419,7 @@ resetButton.addEventListener(
         ).checked = true;
 
 
-        generatedResult.innerHTML =
-            "";
+        generatedResult.innerHTML = "";
 
 
         generatedResult.classList.remove(
@@ -2816,7 +2494,6 @@ document.addEventListener(
 );
 
 </script>
-
 
 </body>
 </html>
