@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -8,15 +10,23 @@
 
 <style>
 
+/* =========================================================
+   ROOT
+========================================================= */
+
 :root {
     --orange: #D94E2B;
     --orange-dark: #b83d20;
     --black: #111111;
     --white: #ffffff;
-    --light: #f7f7f7;
     --border: #dddddd;
     --muted: #666666;
 }
+
+
+/* =========================================================
+   GLOBAL
+========================================================= */
 
 * {
     box-sizing: border-box;
@@ -28,7 +38,7 @@ html {
 
 body {
     margin: 0;
-    background: var(--white);
+    background: #ffffff;
     color: var(--black);
     font-family: Arial, Helvetica, sans-serif;
     line-height: 1.55;
@@ -302,13 +312,13 @@ input[readonly] {
    BUTTONS
 ========================================================= */
 
+button {
+    font-family: inherit;
+}
+
 .submit-area {
     margin-top: 30px;
     text-align: center;
-}
-
-button {
-    font-family: inherit;
 }
 
 .submit-button,
@@ -397,17 +407,22 @@ button {
 
 .workflow-document {
     position: relative;
-    background: rgba(255,255,255,0.96);
+    background: rgba(255,255,255,0.98);
     border: 1px solid #ddd;
     border-radius: 18px;
     overflow: hidden;
     box-shadow: 0 15px 50px rgba(0,0,0,0.06);
 }
 
+
+/* =========================================================
+   DOCUMENT HEADER
+========================================================= */
+
 .document-header {
     background: var(--black);
     color: white;
-    padding: 42px 35px;
+    padding: 40px 35px;
     position: relative;
 }
 
@@ -421,16 +436,9 @@ button {
     background: var(--orange);
 }
 
-.document-brand {
-    color: var(--orange);
-    font-size: 13px;
-    font-weight: 900;
-    letter-spacing: 3px;
-}
-
 .document-title {
-    margin: 8px 0 0;
-    font-size: clamp(30px, 5vw, 50px);
+    margin: 0;
+    font-size: clamp(30px, 5vw, 48px);
     line-height: 1.05;
     font-weight: 900;
 }
@@ -439,9 +447,19 @@ button {
     color: var(--orange);
 }
 
+
+/* =========================================================
+   DOCUMENT BODY
+========================================================= */
+
 .document-body {
     padding: 35px;
 }
+
+
+/* =========================================================
+   CLIENT INFORMATION
+========================================================= */
 
 .client-info {
     display: grid;
@@ -479,6 +497,11 @@ button {
     font-weight: 800;
 }
 
+
+/* =========================================================
+   PLAN
+========================================================= */
+
 .plan-banner {
     padding: 22px;
     border-radius: 13px;
@@ -507,6 +530,11 @@ button {
     color: #555;
 }
 
+
+/* =========================================================
+   WORKFLOW HEADING
+========================================================= */
+
 .workflow-heading {
     font-size: 27px;
     font-weight: 900;
@@ -517,6 +545,11 @@ button {
     color: var(--orange);
 }
 
+
+/* =========================================================
+   WEEKS
+========================================================= */
+
 .week {
     border: 1px solid #ddd;
     border-radius: 13px;
@@ -524,6 +557,7 @@ button {
     padding: 25px;
     background: white;
     break-inside: avoid;
+    page-break-inside: avoid;
 }
 
 .week-title {
@@ -546,6 +580,11 @@ button {
     margin-bottom: 0;
 }
 
+
+/* =========================================================
+   TOTAL
+========================================================= */
+
 .total {
     margin-top: 25px;
     padding: 20px;
@@ -553,13 +592,22 @@ button {
     color: white;
     border-radius: 12px;
     font-weight: 800;
+    break-inside: avoid;
+    page-break-inside: avoid;
 }
+
+
+/* =========================================================
+   DOCUMENT FOOTER
+========================================================= */
 
 .document-footer {
     margin-top: 35px;
     padding-top: 28px;
     border-top: 2px solid var(--orange);
     text-align: center;
+    break-inside: avoid;
+    page-break-inside: avoid;
 }
 
 .document-footer .grow {
@@ -681,117 +729,306 @@ footer strong {
 
 /* =========================================================
    PRINT / PDF
-
-   IMPORTANT:
-   No logo is added here.
-   The watermark is also hidden.
 ========================================================= */
 
 @media print {
 
+    @page {
+        size: A4;
+        margin: 14mm;
+    }
+
+    html,
     body {
-        background: white;
-        color: black;
+        margin: 0;
+        padding: 0;
+        background: white !important;
+        color: black !important;
     }
 
-    /* Hide the large website watermark in PDF */
-    .watermark {
-        display: none !important;
+    /*
+       IMPORTANT:
+       Hide everything visually except the generated
+       client workflow.
+    */
+
+    body * {
+        visibility: hidden !important;
     }
 
-    /* Hide buttons and PDF controls */
-    .submit-area,
-    .pdf-area {
-        display: none !important;
+    /*
+       Show ONLY the generated workflow.
+    */
+
+    #generatedSection,
+    #generatedSection * {
+        visibility: visible !important;
     }
 
-    /* Hide the generated workflow section title */
+    /*
+       Position the PDF document at the very top.
+    */
+
+    #generatedSection {
+        display: block !important;
+        position: absolute !important;
+        left: 0 !important;
+        top: 0 !important;
+        width: 100% !important;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
+    /*
+       Remove the website's "04 Generated Workflow"
+       heading from the PDF.
+    */
+
     #generatedSection > .section-title {
         display: none !important;
     }
 
-    /* Remove website-only decorative elements */
-    header {
-        padding-top: 20px;
+    /*
+       Remove unnecessary screen styling around
+       the document for the PDF.
+    */
+
+    #generatedResult {
+        display: block !important;
+        width: 100% !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        border: 0 !important;
+        border-radius: 0 !important;
+        box-shadow: none !important;
+        background: white !important;
+        overflow: visible !important;
     }
 
-    /* Make generated document suitable for printing */
     .workflow-document {
-        border: 0;
-        border-radius: 0;
-        box-shadow: none;
-        overflow: visible;
+        border: 0 !important;
+        border-radius: 0 !important;
+        box-shadow: none !important;
+        background: white !important;
+        overflow: visible !important;
     }
+
+    /*
+       Client-facing PDF title.
+    */
 
     .document-header {
-        border-radius: 0;
+        background: white !important;
+        color: black !important;
+        padding: 0 0 18px 0 !important;
+        margin: 0 0 25px 0 !important;
+        border-bottom: 3px solid var(--orange) !important;
     }
+
+    .document-header::after {
+        display: none !important;
+    }
+
+    .document-title {
+        color: black !important;
+        font-size: 30px !important;
+        font-weight: 900 !important;
+        letter-spacing: 0 !important;
+        margin: 0 !important;
+    }
+
+    .document-title span {
+        color: var(--orange) !important;
+    }
+
+    /*
+       Document body.
+    */
+
+    .document-body {
+        padding: 0 !important;
+    }
+
+    /*
+       Client information.
+    */
+
+    .client-info {
+        display: grid !important;
+        grid-template-columns: repeat(2, 1fr) !important;
+        border: 1px solid #cccccc !important;
+        border-radius: 8px !important;
+        margin-bottom: 22px !important;
+        overflow: hidden !important;
+    }
+
+    .client-item {
+        padding: 12px 15px !important;
+        border-bottom: 1px solid #cccccc !important;
+    }
+
+    .client-item:nth-child(odd) {
+        border-right: 1px solid #cccccc !important;
+    }
+
+    .client-item:nth-last-child(-n+2) {
+        border-bottom: 0 !important;
+    }
+
+    .client-label {
+        font-size: 9px !important;
+        color: #666 !important;
+    }
+
+    .client-value {
+        font-size: 14px !important;
+        color: black !important;
+    }
+
+    /*
+       Selected plan.
+    */
+
+    .plan-banner {
+        background: #fff4ef !important;
+        border-left: 5px solid var(--orange) !important;
+        padding: 15px 18px !important;
+        margin-bottom: 22px !important;
+        border-radius: 7px !important;
+    }
+
+    .plan-banner-label {
+        font-size: 9px !important;
+        color: #666 !important;
+    }
+
+    .plan-banner-name {
+        font-size: 21px !important;
+        color: var(--orange) !important;
+    }
+
+    .plan-banner-price {
+        font-size: 12px !important;
+        color: #555 !important;
+    }
+
+    /*
+       "4 weeks workflow:"
+    */
+
+    .workflow-heading {
+        font-size: 22px !important;
+        margin: 20px 0 14px !important;
+        color: black !important;
+    }
+
+    .workflow-heading span {
+        color: var(--orange) !important;
+    }
+
+    /*
+       Weekly workflow boxes.
+    */
 
     .week {
-        break-inside: avoid;
+        border: 1px solid #cccccc !important;
+        border-radius: 7px !important;
+        padding: 15px 18px !important;
+        margin-bottom: 12px !important;
+        background: white !important;
+        break-inside: avoid !important;
+        page-break-inside: avoid !important;
     }
 
-    /* Footer print styling */
-    footer {
-        color: black;
-        background: white;
-        border-top: 2px solid var(--orange);
+    .week-title {
+        font-size: 16px !important;
+        color: var(--orange) !important;
+        margin-bottom: 8px !important;
+    }
+
+    .week ul {
+        margin: 0 !important;
+        padding-left: 19px !important;
+    }
+
+    .week li {
+        font-size: 11.5px !important;
+        margin-bottom: 5px !important;
+        color: black !important;
+    }
+
+    /*
+       Total.
+    */
+
+    .total {
+        padding: 13px 16px !important;
+        margin-top: 16px !important;
+        background: var(--orange) !important;
+        color: white !important;
+        border-radius: 7px !important;
+        font-size: 11px !important;
+        break-inside: avoid !important;
+        page-break-inside: avoid !important;
+    }
+
+    /*
+       Client-facing final message.
+    */
+
+    .document-footer {
+        margin-top: 25px !important;
+        padding-top: 18px !important;
+        border-top: 2px solid var(--orange) !important;
+        text-align: center !important;
+        break-inside: avoid !important;
+        page-break-inside: avoid !important;
+    }
+
+    .document-footer .grow {
+        font-size: 20px !important;
+        color: var(--orange) !important;
+    }
+
+    .document-footer p {
+        font-size: 11px !important;
+        margin-top: 5px !important;
+        color: black !important;
+    }
+
+    .document-footer strong {
+        color: var(--orange) !important;
+    }
+
+    /*
+       Absolutely no logo / watermark in PDF.
+    */
+
+    .watermark,
+    .watermark img {
+        display: none !important;
+    }
+
+    /*
+       No browser-generated website footer/header elements.
+    */
+
+    header,
+    footer,
+    .pdf-area,
+    .submit-area {
+        display: none !important;
     }
 
 }
 
 
 /* =========================================================
-   EXTRA PRINT PAGE SETTINGS
+   END CSS
 ========================================================= */
 
-@page {
-    size: A4;
-    margin: 12mm;
-}
-
-@media print {
-
-    .app {
-        width: 100%;
-    }
-
-    main.container {
-        width: 100%;
-        max-width: none;
-    }
-
-    #generatedSection {
-        margin: 0;
-    }
-
-    .document-body {
-        padding: 25px 0;
-    }
-
-    .document-header {
-        padding: 30px 25px;
-    }
-
-    .client-info {
-        break-inside: avoid;
-    }
-
-    .plan-banner {
-        break-inside: avoid;
-    }
-
-    .total {
-        break-inside: avoid;
-    }
-
-    .document-footer {
-        break-inside: avoid;
-    }
-
-}
-
 </style>
+
 </head>
 
 
@@ -799,10 +1036,10 @@ footer strong {
 
 
 <!-- ========================================================
-     LOGO WATERMARK
-
-     Put your logo in the same GitHub repository and name it:
-     logo.png
+     WATERMARK
+     
+     This is visible ONLY on the website.
+     It will NOT appear in the PDF.
 ========================================================= -->
 
 <div class="watermark">
@@ -818,516 +1055,510 @@ footer strong {
 <div class="app">
 
 
-    <!-- ====================================================
-         HEADER
-    ===================================================== -->
+<!-- ========================================================
+     WEBSITE HEADER
+========================================================= -->
 
-    <header>
+<header>
 
-        <div class="container">
+    <div class="container">
 
-            <div class="brand">
-                JSONS PROJECT MANAGER
+        <div class="brand">
+            JSONS PROJECT MANAGER
+        </div>
+
+        <h1>
+            Project <span>Workflow</span>
+        </h1>
+
+        <div class="subtitle">
+            Build. Manage. Grow.
+        </div>
+
+    </div>
+
+</header>
+
+
+<main class="container">
+
+
+<!-- ========================================================
+     SECTION 01
+     CLIENT INFORMATION
+========================================================= -->
+
+<section class="section">
+
+    <div class="section-title">
+
+        <div class="section-number">
+            01
+        </div>
+
+        <h2>
+            Client Information
+        </h2>
+
+    </div>
+
+
+    <div class="form-card">
+
+        <div class="grid">
+
+
+            <div class="field">
+
+                <label for="clientName">
+                    Client Name <span>*</span>
+                </label>
+
+                <input
+                    type="text"
+                    id="clientName"
+                    placeholder="Enter client name"
+                    autocomplete="organization"
+                >
+
             </div>
 
-            <h1>
-                Project <span>Workflow</span>
-            </h1>
 
-            <div class="subtitle">
-                Build. Manage. Grow.
+            <div class="field">
+
+                <label for="pocName">
+                    POC Name <span>*</span>
+                </label>
+
+                <input
+                    type="text"
+                    id="pocName"
+                    placeholder="Enter point of contact"
+                    autocomplete="name"
+                >
+
             </div>
+
+
+            <div class="field">
+
+                <label for="mobile">
+                    Mobile Number <span>*</span>
+                </label>
+
+                <input
+                    type="tel"
+                    id="mobile"
+                    placeholder="Enter mobile number"
+                    autocomplete="tel"
+                >
+
+            </div>
+
+
+            <div class="field">
+
+                <label for="email">
+                    Email Address <span>*</span>
+                </label>
+
+                <input
+                    type="email"
+                    id="email"
+                    placeholder="Enter email address"
+                    autocomplete="email"
+                >
+
+            </div>
+
 
         </div>
 
-    </header>
+    </div>
 
+</section>
 
-    <main class="container">
 
+<!-- ========================================================
+     SECTION 02
+     PROJECT DATES
+========================================================= -->
 
-        <!-- =================================================
-             CLIENT INFORMATION
-        ================================================== -->
+<section class="section">
 
-        <section class="section">
+    <div class="section-title">
 
-            <div class="section-title">
+        <div class="section-number">
+            02
+        </div>
 
-                <div class="section-number">
-                    01
-                </div>
+        <h2>
+            Project Dates
+        </h2>
 
-                <h2>
-                    Client Information
-                </h2>
+    </div>
 
-            </div>
 
+    <div class="form-card">
 
-            <div class="form-card">
+        <div class="grid">
 
-                <div class="grid">
 
+            <div class="field">
 
-                    <div class="field">
+                <label for="startDate">
+                    Project Start Date <span>*</span>
+                </label>
 
-                        <label for="clientName">
-                            Client Name <span>*</span>
-                        </label>
-
-                        <input
-                            type="text"
-                            id="clientName"
-                            placeholder="Enter client name"
-                            autocomplete="organization"
-                        >
-
-                    </div>
-
-
-                    <div class="field">
-
-                        <label for="pocName">
-                            POC Name <span>*</span>
-                        </label>
-
-                        <input
-                            type="text"
-                            id="pocName"
-                            placeholder="Enter point of contact"
-                            autocomplete="name"
-                        >
-
-                    </div>
-
-
-                    <div class="field">
-
-                        <label for="mobile">
-                            Mobile Number <span>*</span>
-                        </label>
-
-                        <input
-                            type="tel"
-                            id="mobile"
-                            placeholder="Enter mobile number"
-                            autocomplete="tel"
-                        >
-
-                    </div>
-
-
-                    <div class="field">
-
-                        <label for="email">
-                            Email Address <span>*</span>
-                        </label>
-
-                        <input
-                            type="email"
-                            id="email"
-                            placeholder="Enter email address"
-                            autocomplete="email"
-                        >
-
-                    </div>
-
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- =================================================
-             PROJECT DATES
-        ================================================== -->
-
-        <section class="section">
-
-            <div class="section-title">
-
-                <div class="section-number">
-                    02
-                </div>
-
-                <h2>
-                    Project Dates
-                </h2>
-
-            </div>
-
-
-            <div class="form-card">
-
-                <div class="grid">
-
-
-                    <div class="field">
-
-                        <label for="startDate">
-                            Project Start Date <span>*</span>
-                        </label>
-
-                        <input
-                            type="date"
-                            id="startDate"
-                        >
-
-                    </div>
-
-
-                    <div class="field">
-
-                        <label for="endDate">
-                            Project End Date
-                        </label>
-
-                        <input
-                            type="date"
-                            id="endDate"
-                            readonly
-                        >
-
-                        <div class="date-help">
-                            Automatically calculated as 30 days from the
-                            project start date.
-                        </div>
-
-                    </div>
-
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- =================================================
-             PLAN SELECTION
-        ================================================== -->
-
-        <section class="section">
-
-            <div class="section-title">
-
-                <div class="section-number">
-                    03
-                </div>
-
-                <h2>
-                    Select Plan
-                </h2>
-
-            </div>
-
-
-            <div class="plans">
-
-
-                <!-- BASIC -->
-
-                <div>
-
-                    <input
-                        class="plan-radio"
-                        type="radio"
-                        name="plan"
-                        id="basic"
-                        value="basic"
-                        checked
-                    >
-
-                    <label
-                        class="plan-label"
-                        for="basic"
-                    >
-
-                        <div class="plan-name">
-
-                            <strong>
-                                Basic Plan
-                            </strong>
-
-                            <div class="radio-circle"></div>
-
-                        </div>
-
-
-                        <div class="plan-price">
-
-                            ₹5,000
-
-                            <small>
-                                /month
-                            </small>
-
-                        </div>
-
-
-                        <div class="plan-description">
-
-                            8 Posts + 4 Reels + Instagram & Facebook
-                            Management + Chat Automation
-
-                        </div>
-
-                    </label>
-
-                </div>
-
-
-                <!-- ADVANCED -->
-
-                <div>
-
-                    <input
-                        class="plan-radio"
-                        type="radio"
-                        name="plan"
-                        id="advanced"
-                        value="advanced"
-                    >
-
-                    <label
-                        class="plan-label"
-                        for="advanced"
-                    >
-
-                        <div class="plan-name">
-
-                            <strong>
-                                Advanced Plan
-                            </strong>
-
-                            <div class="radio-circle"></div>
-
-                        </div>
-
-
-                        <div class="plan-price">
-
-                            ₹7,500
-
-                            <small>
-                                /month
-                            </small>
-
-                        </div>
-
-
-                        <div class="plan-description">
-
-                            16 Posts + 8 Reels + Social Media +
-                            Google My Business + Meta Ads + Leads
-
-                        </div>
-
-                    </label>
-
-                </div>
-
-
-                <!-- PREMIUM -->
-
-                <div>
-
-                    <input
-                        class="plan-radio"
-                        type="radio"
-                        name="plan"
-                        id="premium"
-                        value="premium"
-                    >
-
-                    <label
-                        class="plan-label"
-                        for="premium"
-                    >
-
-                        <div class="plan-name">
-
-                            <strong>
-                                Premium Plan
-                            </strong>
-
-                            <div class="radio-circle"></div>
-
-                        </div>
-
-
-                        <div class="plan-price">
-
-                            ₹9,999
-
-                            <small>
-                                /month
-                            </small>
-
-                        </div>
-
-
-                        <div class="plan-description">
-
-                            Complete marketing package +
-                            Website / Webpage Development
-
-                        </div>
-
-                    </label>
-
-                </div>
-
-
-            </div>
-
-
-            <div
-                id="errorMessage"
-                class="error-message"
-            ></div>
-
-
-            <div class="submit-area">
-
-                <button
-                    type="button"
-                    class="submit-button"
-                    id="generateButton"
+                <input
+                    type="date"
+                    id="startDate"
                 >
-                    GENERATE PROJECT WORKFLOW
-                </button>
 
             </div>
 
-        </section>
 
+            <div class="field">
 
-        <!-- =================================================
-             GENERATED RESULT
-        ================================================== -->
+                <label for="endDate">
+                    Project End Date
+                </label>
 
-        <section
-            class="section"
-            id="generatedSection"
-            style="display:none;"
-        >
+                <input
+                    type="date"
+                    id="endDate"
+                    readonly
+                >
 
-            <div class="section-title">
-
-                <div class="section-number">
-                    04
+                <div class="date-help">
+                    Automatically calculated as 30 days from
+                    the project start date.
                 </div>
 
-                <h2>
-                    Generated Workflow
-                </h2>
-
             </div>
 
 
-            <div
-                id="generatedResult"
-                class="workflow-document"
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ========================================================
+     SECTION 03
+     PLAN SELECTION
+========================================================= -->
+
+<section class="section">
+
+    <div class="section-title">
+
+        <div class="section-number">
+            03
+        </div>
+
+        <h2>
+            Select Plan
+        </h2>
+
+    </div>
+
+
+    <div class="plans">
+
+
+        <!-- BASIC -->
+
+        <div>
+
+            <input
+                class="plan-radio"
+                type="radio"
+                name="plan"
+                id="basic"
+                value="basic"
+                checked
             >
 
-                <!-- JavaScript inserts the generated
-                     client document here. -->
+            <label
+                class="plan-label"
+                for="basic"
+            >
 
-            </div>
+                <div class="plan-name">
 
-        </section>
+                    <strong>
+                        Basic Plan
+                    </strong>
+
+                    <div class="radio-circle"></div>
+
+                </div>
 
 
-        <!-- =================================================
-             PDF AREA
-        ================================================== -->
+                <div class="plan-price">
 
-        <div
-            class="pdf-area"
-            id="pdfArea"
+                    ₹5,000
+
+                    <small>
+                        /month
+                    </small>
+
+                </div>
+
+
+                <div class="plan-description">
+
+                    8 Posts + 4 Reels +
+                    Instagram & Facebook Management +
+                    Chat Automation
+
+                </div>
+
+            </label>
+
+        </div>
+
+
+        <!-- ADVANCED -->
+
+        <div>
+
+            <input
+                class="plan-radio"
+                type="radio"
+                name="plan"
+                id="advanced"
+                value="advanced"
+            >
+
+            <label
+                class="plan-label"
+                for="advanced"
+            >
+
+                <div class="plan-name">
+
+                    <strong>
+                        Advanced Plan
+                    </strong>
+
+                    <div class="radio-circle"></div>
+
+                </div>
+
+
+                <div class="plan-price">
+
+                    ₹7,500
+
+                    <small>
+                        /month
+                    </small>
+
+                </div>
+
+
+                <div class="plan-description">
+
+                    16 Posts + 8 Reels +
+                    Social Media +
+                    Google My Business +
+                    Meta Ads + Leads
+
+                </div>
+
+            </label>
+
+        </div>
+
+
+        <!-- PREMIUM -->
+
+        <div>
+
+            <input
+                class="plan-radio"
+                type="radio"
+                name="plan"
+                id="premium"
+                value="premium"
+            >
+
+            <label
+                class="plan-label"
+                for="premium"
+            >
+
+                <div class="plan-name">
+
+                    <strong>
+                        Premium Plan
+                    </strong>
+
+                    <div class="radio-circle"></div>
+
+                </div>
+
+
+                <div class="plan-price">
+
+                    ₹9,999
+
+                    <small>
+                        /month
+                    </small>
+
+                </div>
+
+
+                <div class="plan-description">
+
+                    Complete marketing package +
+                    Website / Webpage Development
+
+                </div>
+
+            </label>
+
+        </div>
+
+
+    </div>
+
+
+    <div
+        id="errorMessage"
+        class="error-message"
+    ></div>
+
+
+    <div class="submit-area">
+
+        <button
+            type="button"
+            class="submit-button"
+            id="generateButton"
         >
+            GENERATE PROJECT WORKFLOW
+        </button>
 
-            <h3>
-                Ready to share this workflow?
-            </h3>
+    </div>
 
-            <p>
-                Your client workflow is ready.
-                Click below and choose <strong>Save as PDF</strong>.
-            </p>
+</section>
 
 
-            <div class="button-row">
+<!-- ========================================================
+     SECTION 04
+     GENERATED WORKFLOW
+========================================================= -->
+
+<section
+    class="section"
+    id="generatedSection"
+    style="display:none;"
+>
 
 
-                <button
-                    type="button"
-                    class="pdf-button"
-                    id="pdfButton"
-                >
-                    DOWNLOAD / SAVE AS PDF
-                </button>
+    <div class="section-title">
 
-
-                <button
-                    type="button"
-                    class="reset-button"
-                    id="resetButton"
-                >
-                    CREATE NEW PROJECT
-                </button>
-
-
-            </div>
-
+        <div class="section-number">
+            04
         </div>
 
+        <h2>
+            Generated Workflow
+        </h2>
 
-    </main>
+    </div>
 
 
-    <!-- ====================================================
-         FOOTER
-    ===================================================== -->
+    <div
+        id="generatedResult"
+        class="workflow-document"
+    >
 
-    <footer>
+        <!-- JavaScript creates the client workflow here -->
 
-        <div class="container">
+    </div>
 
-            <div class="grow">
-                Ready to Grow Your Brand?
-            </div>
 
-            <p>
+</section>
 
-                Contact us :
 
-                <strong>
-                    8610817060
-                </strong>
+<!-- ========================================================
+     PDF ACTION AREA
+========================================================= -->
 
-            </p>
+<div
+    class="pdf-area"
+    id="pdfArea"
+>
 
+    <h3>
+        Ready to share this workflow?
+    </h3>
+
+    <p>
+        Your client workflow is ready.
+        Click below and choose <strong>Save as PDF</strong>.
+    </p>
+
+
+    <div class="button-row">
+
+        <button
+            type="button"
+            class="pdf-button"
+            id="pdfButton"
+        >
+            DOWNLOAD / SAVE AS PDF
+        </button>
+
+
+        <button
+            type="button"
+            class="reset-button"
+            id="resetButton"
+        >
+            CREATE NEW PROJECT
+        </button>
+
+    </div>
+
+</div>
+
+
+</main>
+
+
+<!-- ========================================================
+     WEBSITE FOOTER
+========================================================= -->
+
+<footer>
+
+    <div class="container">
+
+        <div class="grow">
+            Ready to Grow Your Brand?
         </div>
 
-    </footer>
+        <p>
+            Contact us :
+            <strong>8610817060</strong>
+        </p>
+
+    </div>
+
+</footer>
 
 
 </div>
 
 
-
 <script>
-
-/* =========================================================
-   JSONS PROJECT MANAGER
-   Vanilla JavaScript
-   No framework / no backend
-========================================================= */
 
 
 /* =========================================================
@@ -1349,9 +1580,7 @@ const workflows = {
         weeks: [
 
             {
-
-                title:
-                    "Week 1 — Setup & Content Planning",
+                title: "Week 1 — Setup & Content Planning",
 
                 items: [
 
@@ -1368,14 +1597,11 @@ const workflows = {
                     "Set up or review basic chat automation for common customer questions."
 
                 ]
-
             },
 
 
             {
-
-                title:
-                    "Week 2 — Consistent Content & Engagement",
+                title: "Week 2 — Consistent Content & Engagement",
 
                 items: [
 
@@ -1392,14 +1618,11 @@ const workflows = {
                     "Make minor content adjustments based on engagement."
 
                 ]
-
             },
 
 
             {
-
-                title:
-                    "Week 3 — Engagement & Content Improvement",
+                title: "Week 3 — Engagement & Content Improvement",
 
                 items: [
 
@@ -1416,14 +1639,11 @@ const workflows = {
                     "Review which content is performing better."
 
                 ]
-
             },
 
 
             {
-
-                title:
-                    "Week 4 — Final Content & Monthly Review",
+                title: "Week 4 — Final Content & Monthly Review",
 
                 items: [
 
@@ -1440,7 +1660,6 @@ const workflows = {
                     "Identify the best-performing posts/Reels and prepare ideas for the next month."
 
                 ]
-
             }
 
         ]
@@ -1460,9 +1679,7 @@ const workflows = {
         weeks: [
 
             {
-
-                title:
-                    "Week 1 — Strategy, Content & Lead Setup",
+                title: "Week 1 — Strategy, Content & Lead Setup",
 
                 items: [
 
@@ -1485,14 +1702,11 @@ const workflows = {
                     "Set up the lead management process."
 
                 ]
-
             },
 
 
             {
-
-                title:
-                    "Week 2 — Content + Advertising + Leads",
+                title: "Week 2 — Content + Advertising + Leads",
 
                 items: [
 
@@ -1513,14 +1727,11 @@ const workflows = {
                     "Review chat automation performance."
 
                 ]
-
             },
 
 
             {
-
-                title:
-                    "Week 3 — Performance Optimization",
+                title: "Week 3 — Performance Optimization",
 
                 items: [
 
@@ -1541,14 +1752,11 @@ const workflows = {
                     "Adjust upcoming content based on performance."
 
                 ]
-
             },
 
 
             {
-
-                title:
-                    "Week 4 — Final Content + Monthly Reporting",
+                title: "Week 4 — Final Content + Monthly Reporting",
 
                 items: [
 
@@ -1569,7 +1777,6 @@ const workflows = {
                     "Prepare the next month's content and advertising recommendations."
 
                 ]
-
             }
 
         ]
@@ -1589,9 +1796,7 @@ const workflows = {
         weeks: [
 
             {
-
-                title:
-                    "Week 1 — Strategy + Website Planning",
+                title: "Week 1 — Strategy + Website Planning",
 
                 items: [
 
@@ -1616,14 +1821,11 @@ const workflows = {
                     "Website/Webpage: collect required business information, images, logo, services, contact details and decide the website structure."
 
                 ]
-
             },
 
 
             {
-
-                title:
-                    "Week 2 — Content + Website Development",
+                title: "Week 2 — Content + Website Development",
 
                 items: [
 
@@ -1644,14 +1846,11 @@ const workflows = {
                     "Website/Webpage: develop the main pages/sections such as Home, About, Services, Contact, etc."
 
                 ]
-
             },
 
 
             {
-
-                title:
-                    "Week 3 — Optimization + Website Review",
+                title: "Week 3 — Optimization + Website Review",
 
                 items: [
 
@@ -1674,14 +1873,11 @@ const workflows = {
                     "Share the website draft for review and collect required corrections."
 
                 ]
-
             },
 
 
             {
-
-                title:
-                    "Week 4 — Finalization + Monthly Review",
+                title: "Week 4 — Finalization + Monthly Review",
 
                 items: [
 
@@ -1704,7 +1900,6 @@ const workflows = {
                     "Review overall monthly performance and plan the next month's marketing activities."
 
                 ]
-
             }
 
         ]
@@ -1774,10 +1969,6 @@ startDate.addEventListener(
         }
 
 
-        /*
-           END DATE = START DATE + 30 DAYS
-        */
-
         const date =
             new Date(
                 this.value + "T00:00:00"
@@ -1822,15 +2013,13 @@ function formatDateForInput(date) {
 
 
 /* =========================================================
-   DISPLAY DATE
+   FORMAT DATE FOR CLIENT PDF
 ========================================================= */
 
 function formatDisplayDate(value) {
 
     if (!value) {
-
         return "-";
-
     }
 
 
@@ -1908,6 +2097,38 @@ function escapeHTML(value) {
 
 
 /* =========================================================
+   ERROR
+========================================================= */
+
+function showError(message) {
+
+    errorMessage.textContent =
+        message;
+
+    errorMessage.classList.add(
+        "show"
+    );
+
+
+    window.scrollTo({
+
+        top:
+            errorMessage
+            .getBoundingClientRect()
+            .top
+            +
+            window.scrollY
+            -
+            100,
+
+        behavior: "smooth"
+
+    });
+
+}
+
+
+/* =========================================================
    VALIDATION
 ========================================================= */
 
@@ -1929,7 +2150,6 @@ function validateForm() {
         clientName.focus();
 
         return false;
-
     }
 
 
@@ -1942,7 +2162,6 @@ function validateForm() {
         pocName.focus();
 
         return false;
-
     }
 
 
@@ -1955,7 +2174,6 @@ function validateForm() {
         mobile.focus();
 
         return false;
-
     }
 
 
@@ -1968,7 +2186,6 @@ function validateForm() {
         email.focus();
 
         return false;
-
     }
 
 
@@ -1981,7 +2198,6 @@ function validateForm() {
         email.focus();
 
         return false;
-
     }
 
 
@@ -1994,7 +2210,6 @@ function validateForm() {
         startDate.focus();
 
         return false;
-
     }
 
 
@@ -2005,7 +2220,6 @@ function validateForm() {
         );
 
         return false;
-
     }
 
 
@@ -2016,41 +2230,10 @@ function validateForm() {
         );
 
         return false;
-
     }
 
 
     return true;
-
-}
-
-
-/* =========================================================
-   SHOW ERROR
-========================================================= */
-
-function showError(message) {
-
-    errorMessage.textContent =
-        message;
-
-    errorMessage.classList.add(
-        "show"
-    );
-
-
-    window.scrollTo({
-
-        top:
-            errorMessage
-                .getBoundingClientRect()
-                .top
-            + window.scrollY
-            - 100,
-
-        behavior: "smooth"
-
-    });
 
 }
 
@@ -2065,9 +2248,7 @@ generateButton.addEventListener(
 
 
         if (!validateForm()) {
-
             return;
-
         }
 
 
@@ -2115,9 +2296,9 @@ generateButton.addEventListener(
             );
 
 
-        /* =================================================
+        /* =====================================================
            BUILD WEEK HTML
-        ================================================= */
+        ===================================================== */
 
         let weeksHTML = "";
 
@@ -2144,11 +2325,18 @@ generateButton.addEventListener(
                     <div class="week">
 
                         <div class="week-title">
-                            ${escapeHTML(week.title)}
+
+                            ${escapeHTML(
+                                week.title
+                            )}
+
                         </div>
 
+
                         <ul>
+
                             ${listHTML}
+
                         </ul>
 
                     </div>
@@ -2159,194 +2347,235 @@ generateButton.addEventListener(
         );
 
 
-        /* =================================================
-           BUILD COMPLETE DOCUMENT
-        ================================================= */
+        /* =====================================================
+           BUILD CLIENT-FACING DOCUMENT
+        ===================================================== */
 
         generatedResult.innerHTML = `
 
-            <div class="document-header">
-
-                <div class="document-brand">
-                    JSONS
-                </div>
-
-                <div class="document-title">
-                    JSONS PROJECT <span>WORKFLOW</span>
-                </div>
-
-            </div>
+            <div class="workflow-document">
 
 
-            <div class="document-body">
+                <!-- =========================================
+                     PDF TITLE
+                ========================================== -->
 
+                <div class="document-header">
 
-                <div class="client-info">
+                    <div class="document-title">
 
+                        JSONS PROJECT <span>WORKFLOW</span>
 
-                    <div class="client-item">
-
-                        <div class="client-label">
-                            Client Name
-                        </div>
-
-                        <div class="client-value">
-                            ${client}
-                        </div>
-
-                    </div>
-
-
-                    <div class="client-item">
-
-                        <div class="client-label">
-                            POC Name
-                        </div>
-
-                        <div class="client-value">
-                            ${poc}
-                        </div>
-
-                    </div>
-
-
-                    <div class="client-item">
-
-                        <div class="client-label">
-                            Mobile Number
-                        </div>
-
-                        <div class="client-value">
-                            ${phone}
-                        </div>
-
-                    </div>
-
-
-                    <div class="client-item">
-
-                        <div class="client-label">
-                            Email Address
-                        </div>
-
-                        <div class="client-value">
-                            ${mail}
-                        </div>
-
-                    </div>
-
-
-                    <div class="client-item">
-
-                        <div class="client-label">
-                            Project Start Date
-                        </div>
-
-                        <div class="client-value">
-                            ${start}
-                        </div>
-
-                    </div>
-
-
-                    <div class="client-item">
-
-                        <div class="client-label">
-                            Project End Date
-                        </div>
-
-                        <div class="client-value">
-                            ${end}
-                        </div>
-
-                    </div>
-
-
-                </div>
-
-
-                <div class="plan-banner">
-
-                    <div class="plan-banner-label">
-                        Selected Plan
-                    </div>
-
-                    <div class="plan-banner-name">
-                        ${escapeHTML(plan.name)}
-                    </div>
-
-                    <div class="plan-banner-price">
-                        ${escapeHTML(plan.price)}
                     </div>
 
                 </div>
 
 
-                <div class="workflow-heading">
-
-                    <span>
-                        4 Weeks
-                    </span>
-
-                    Workflow
-
-                </div>
+                <div class="document-body">
 
 
-                ${weeksHTML}
+                    <!-- =====================================
+                         CLIENT INFORMATION
+                    ====================================== -->
+
+                    <div class="client-info">
 
 
-                <div class="total">
+                        <div class="client-item">
 
-                    Total:
-                    ${escapeHTML(plan.total)}
+                            <div class="client-label">
+                                Client Name
+                            </div>
 
-                </div>
+                            <div class="client-value">
+                                ${client}
+                            </div>
+
+                        </div>
 
 
-                <div class="document-footer">
+                        <div class="client-item">
 
-                    <div class="grow">
-                        Ready to Grow Your Brand?
+                            <div class="client-label">
+                                POC Name
+                            </div>
+
+                            <div class="client-value">
+                                ${poc}
+                            </div>
+
+                        </div>
+
+
+                        <div class="client-item">
+
+                            <div class="client-label">
+                                Mobile Number
+                            </div>
+
+                            <div class="client-value">
+                                ${phone}
+                            </div>
+
+                        </div>
+
+
+                        <div class="client-item">
+
+                            <div class="client-label">
+                                Email Address
+                            </div>
+
+                            <div class="client-value">
+                                ${mail}
+                            </div>
+
+                        </div>
+
+
+                        <div class="client-item">
+
+                            <div class="client-label">
+                                Project Start Date
+                            </div>
+
+                            <div class="client-value">
+                                ${start}
+                            </div>
+
+                        </div>
+
+
+                        <div class="client-item">
+
+                            <div class="client-label">
+                                Project End Date
+                            </div>
+
+                            <div class="client-value">
+                                ${end}
+                            </div>
+
+                        </div>
+
+
                     </div>
 
-                    <p>
 
-                        Contact us :
+                    <!-- =====================================
+                         SELECTED PLAN
+                    ====================================== -->
 
-                        <strong>
-                            8610817060
-                        </strong>
+                    <div class="plan-banner">
 
-                    </p>
+                        <div class="plan-banner-label">
+                            Selected plan:
+                        </div>
+
+                        <div class="plan-banner-name">
+
+                            ${escapeHTML(
+                                plan.name
+                            )}
+
+                        </div>
+
+                        <div class="plan-banner-price">
+
+                            ${escapeHTML(
+                                plan.price
+                            )}
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- =====================================
+                         WORKFLOW
+                    ====================================== -->
+
+                    <div class="workflow-heading">
+
+                        <span>
+                            4 weeks
+                        </span>
+
+                        workflow:
+
+                    </div>
+
+
+                    ${weeksHTML}
+
+
+                    <!-- =====================================
+                         TOTAL
+                    ====================================== -->
+
+                    <div class="total">
+
+                        Total:
+                        ${escapeHTML(
+                            plan.total
+                        )}
+
+                    </div>
+
+
+                    <!-- =====================================
+                         FINAL CLIENT MESSAGE
+                    ====================================== -->
+
+                    <div class="document-footer">
+
+                        <div class="grow">
+
+                            Ready to Grow Your Brand?
+
+                        </div>
+
+
+                        <p>
+
+                            contact us :
+                            <strong>
+                                8610817060
+                            </strong>
+
+                        </p>
+
+                    </div>
+
 
                 </div>
-
 
             </div>
 
         `;
 
 
-        /* =================================================
-           SHOW RESULT
-        ================================================= */
+        /* =====================================================
+           SHOW GENERATED RESULT
+        ===================================================== */
 
         generatedResult.classList.add(
             "show"
         );
 
+
         generatedSection.style.display =
             "block";
+
 
         pdfArea.classList.add(
             "show"
         );
 
 
-        /* =================================================
-           SCROLL TO RESULT
-        ================================================= */
+        /* =====================================================
+           SCROLL TO GENERATED RESULT
+        ===================================================== */
 
         setTimeout(
             function () {
@@ -2368,7 +2597,7 @@ generateButton.addEventListener(
 
 
 /* =========================================================
-   PDF / PRINT
+   PDF BUTTON
 ========================================================= */
 
 pdfButton.addEventListener(
@@ -2376,14 +2605,10 @@ pdfButton.addEventListener(
     function () {
 
         /*
-           Uses the browser's native print engine.
+           Browser's native print/PDF system.
 
-           Choose:
-           "Save as PDF"
-
-           No external library.
-           No backend.
-           No upload.
+           The special @media print CSS above makes sure
+           ONLY the client-facing workflow is printed.
         */
 
         window.print();
@@ -2420,7 +2645,6 @@ resetButton.addEventListener(
 
 
         generatedResult.innerHTML = "";
-
 
         generatedResult.classList.remove(
             "show"
@@ -2493,7 +2717,10 @@ document.addEventListener(
     }
 );
 
+
 </script>
 
+
 </body>
+
 </html>
