@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -8,13 +9,24 @@
 
 <style>
 
+/* =========================================================
+   ROOT
+========================================================= */
+
 :root {
     --orange: #D94E2B;
+    --orange-dark: #b83d20;
     --black: #111111;
     --white: #ffffff;
     --light: #f7f7f7;
     --border: #dddddd;
+    --muted: #666666;
 }
+
+
+/* =========================================================
+   GLOBAL
+========================================================= */
 
 * {
     box-sizing: border-box;
@@ -32,17 +44,21 @@ body {
     line-height: 1.55;
 }
 
-/* =========================================
-   WEBSITE WATERMARK
-========================================= */
+
+/* =========================================================
+   WATERMARK
+========================================================= */
 
 .watermark {
     position: fixed;
     inset: 0;
+
     display: flex;
     justify-content: center;
     align-items: center;
+
     pointer-events: none;
+
     z-index: 0;
     overflow: hidden;
 }
@@ -50,13 +66,16 @@ body {
 .watermark img {
     width: min(850px, 85vw);
     max-height: 80vh;
+
     object-fit: contain;
+
     opacity: 0.20;
 }
 
-/* =========================================
+
+/* =========================================================
    APP
-========================================= */
+========================================================= */
 
 .app {
     position: relative;
@@ -68,9 +87,10 @@ body {
     margin: auto;
 }
 
-/* =========================================
+
+/* =========================================================
    HEADER
-========================================= */
+========================================================= */
 
 header {
     padding: 55px 0 35px;
@@ -80,16 +100,23 @@ header {
 .brand {
     font-size: 14px;
     font-weight: 700;
+
     letter-spacing: 3px;
+
     color: var(--orange);
+
     text-transform: uppercase;
 }
 
 h1 {
     margin: 10px 0 0;
+
     font-size: clamp(34px, 6vw, 64px);
+
     line-height: 1;
+
     font-weight: 900;
+
     letter-spacing: -2px;
 }
 
@@ -99,13 +126,16 @@ h1 span {
 
 .subtitle {
     margin-top: 15px;
+
     color: #555;
+
     font-size: 16px;
 }
 
-/* =========================================
+
+/* =========================================================
    SECTIONS
-========================================= */
+========================================================= */
 
 .section {
     margin: 40px 0;
@@ -113,56 +143,80 @@ h1 span {
 
 .section-title {
     display: flex;
+
     align-items: center;
+
     gap: 15px;
+
     margin-bottom: 22px;
 }
 
 .section-number {
     width: 38px;
     height: 38px;
+
+    flex: 0 0 38px;
+
     background: var(--orange);
+
     color: white;
+
     border-radius: 50%;
+
     display: flex;
+
     justify-content: center;
     align-items: center;
+
     font-weight: 800;
 }
 
 .section-title h2 {
     margin: 0;
+
     font-size: 25px;
 }
 
-/* =========================================
+
+/* =========================================================
    FORM
-========================================= */
+========================================================= */
 
 .form-card {
-    background: rgba(255,255,255,0.95);
+    background: rgba(255,255,255,0.96);
+
     border: 1px solid var(--border);
+
     border-radius: 16px;
+
     padding: 30px;
+
     box-shadow: 0 10px 40px rgba(0,0,0,0.04);
 }
 
 .grid {
     display: grid;
+
     grid-template-columns: repeat(2, 1fr);
+
     gap: 22px;
 }
 
 .field {
     display: flex;
+
     flex-direction: column;
+
     gap: 8px;
 }
 
 label {
     font-size: 13px;
+
     font-weight: 800;
+
     text-transform: uppercase;
+
     letter-spacing: 1px;
 }
 
@@ -172,62 +226,95 @@ label span {
 
 input {
     width: 100%;
+
     padding: 15px 16px;
+
     border: 1px solid #ccc;
+
     border-radius: 9px;
+
     background: white;
+
     color: black;
+
     font-size: 16px;
+
     outline: none;
 }
 
 input:focus {
     border-color: var(--orange);
-    box-shadow: 0 0 0 3px rgba(217,78,43,0.12);
+
+    box-shadow:
+        0 0 0 3px rgba(217,78,43,0.12);
 }
 
 input[readonly] {
-    background: #f2f2f2;
+    background: #eeeeee;
+
     color: #555;
+
     cursor: not-allowed;
 }
 
-/* =========================================
-   PLANS
-========================================= */
+.date-help {
+    color: #777;
+
+    font-size: 12px;
+}
+
+
+/* =========================================================
+   PLAN CARDS
+========================================================= */
 
 .plans {
     display: grid;
+
     grid-template-columns: repeat(3, 1fr);
+
     gap: 18px;
 }
 
 .plan-radio {
     position: absolute;
+
     opacity: 0;
+
     pointer-events: none;
 }
 
 .plan-label {
     display: block;
+
     border: 2px solid #ddd;
+
     border-radius: 15px;
+
     padding: 25px;
+
     cursor: pointer;
+
     background: white;
+
     transition: 0.2s ease;
+
     height: 100%;
 }
 
 .plan-label:hover {
     border-color: var(--orange);
+
     transform: translateY(-2px);
 }
 
 .plan-name {
     display: flex;
+
     justify-content: space-between;
+
     align-items: center;
+
     gap: 10px;
 }
 
@@ -238,212 +325,531 @@ input[readonly] {
 .radio-circle {
     width: 22px;
     height: 22px;
+
     border: 2px solid #aaa;
+
     border-radius: 50%;
+
     position: relative;
 }
 
 .plan-price {
     margin-top: 12px;
+
     font-size: 27px;
+
     font-weight: 900;
+
     color: var(--orange);
 }
 
 .plan-price small {
     color: #777;
+
     font-size: 13px;
+
     font-weight: 500;
 }
 
 .plan-description {
     margin-top: 10px;
+
     color: #666;
+
     font-size: 14px;
 }
 
-#basic:checked + .plan-label,
-#advanced:checked + .plan-label,
-#premium:checked + .plan-label {
+.plan-radio:checked + .plan-label {
     border-color: var(--orange);
+
     background: #fff8f5;
+
+    box-shadow:
+        0 8px 25px rgba(217,78,43,0.10);
 }
 
-#basic:checked + .plan-label .radio-circle,
-#advanced:checked + .plan-label .radio-circle,
-#premium:checked + .plan-label .radio-circle {
+.plan-radio:checked + .plan-label .radio-circle {
     border-color: var(--orange);
 }
 
-#basic:checked + .plan-label .radio-circle::after,
-#advanced:checked + .plan-label .radio-circle::after,
-#premium:checked + .plan-label .radio-circle::after {
+.plan-radio:checked + .plan-label .radio-circle::after {
     content: "";
+
     position: absolute;
+
     width: 10px;
     height: 10px;
+
     background: var(--orange);
+
     border-radius: 50%;
+
     top: 4px;
     left: 4px;
 }
 
-/* =========================================
-   GENERATE BUTTON
-========================================= */
+
+/* =========================================================
+   BUTTONS
+========================================================= */
+
+button {
+    font-family: inherit;
+}
 
 .submit-area {
     margin-top: 30px;
+
     text-align: center;
 }
 
-.submit-button {
-    display: inline-block;
-    background: var(--orange);
-    color: white;
+.submit-button,
+.pdf-button,
+.reset-button {
     border: 0;
+
     border-radius: 10px;
-    padding: 17px 42px;
-    font-size: 16px;
+
+    padding: 16px 28px;
+
+    font-size: 15px;
+
     font-weight: 800;
-    letter-spacing: 1px;
-    text-decoration: none;
+
+    letter-spacing: 0.5px;
+
     cursor: pointer;
+
+    transition: 0.2s ease;
+}
+
+.submit-button {
+    background: var(--orange);
+
+    color: white;
+
+    min-width: 260px;
 }
 
 .submit-button:hover {
-    background: #bd3f20;
+    background: var(--orange-dark);
+
+    transform: translateY(-1px);
 }
 
-/* =========================================
-   WORKFLOW
-========================================= */
+.pdf-button {
+    background: var(--black);
 
-#workflow {
-    scroll-margin-top: 20px;
+    color: white;
 }
 
-.workflow {
+.pdf-button:hover {
+    background: var(--orange);
+}
+
+.reset-button {
+    background: #eeeeee;
+
+    color: #111;
+}
+
+.reset-button:hover {
+    background: #dddddd;
+}
+
+.button-row {
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    gap: 12px;
+
+    flex-wrap: wrap;
+}
+
+
+/* =========================================================
+   ERROR
+========================================================= */
+
+.error-message {
+    display: none;
+
+    margin-top: 18px;
+
+    padding: 14px 16px;
+
+    border-radius: 9px;
+
+    background: #fff0ec;
+
+    border: 1px solid #e9a28f;
+
+    color: #9e3018;
+
+    font-size: 14px;
+
+    font-weight: 700;
+}
+
+.error-message.show {
+    display: block;
+}
+
+
+/* =========================================================
+   GENERATED WORKFLOW
+========================================================= */
+
+#generatedResult {
     display: none;
 }
 
-/* CSS ONLY PLAN SWITCHING */
-
-body:has(#basic:checked) #basic-workflow {
+#generatedResult.show {
     display: block;
 }
 
-body:has(#advanced:checked) #advanced-workflow {
-    display: block;
+.workflow-document {
+    position: relative;
+
+    background: rgba(255,255,255,0.96);
+
+    border: 1px solid #ddd;
+
+    border-radius: 18px;
+
+    overflow: hidden;
+
+    box-shadow:
+        0 15px 50px rgba(0,0,0,0.06);
 }
 
-body:has(#premium:checked) #premium-workflow {
-    display: block;
-}
 
-.workflow-header {
+/* =========================================================
+   DOCUMENT HEADER
+========================================================= */
+
+.document-header {
     background: var(--black);
+
     color: white;
-    padding: 30px;
-    border-radius: 16px 16px 0 0;
+
+    padding: 42px 35px;
+
+    position: relative;
 }
 
-.workflow-header h2 {
-    margin: 0;
-    font-size: 32px;
+.document-header::after {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+
+    bottom: 0;
+
+    width: 150px;
+
+    height: 5px;
+
+    background: var(--orange);
 }
 
-.workflow-header .orange {
+.document-brand {
+    color: var(--orange);
+
+    font-size: 13px;
+
+    font-weight: 900;
+
+    letter-spacing: 3px;
+}
+
+.document-title {
+    margin: 8px 0 0;
+
+    font-size: clamp(30px, 5vw, 50px);
+
+    line-height: 1.05;
+
+    font-weight: 900;
+}
+
+.document-title span {
+    color: var(--orange);
+}
+
+
+/* =========================================================
+   DOCUMENT BODY
+========================================================= */
+
+.document-body {
+    padding: 35px;
+}
+
+
+/* =========================================================
+   CLIENT INFORMATION
+========================================================= */
+
+.client-info {
+    display: grid;
+
+    grid-template-columns: repeat(2, 1fr);
+
+    border: 1px solid #ddd;
+
+    border-radius: 13px;
+
+    overflow: hidden;
+
+    margin-bottom: 30px;
+}
+
+.client-item {
+    padding: 18px 20px;
+
+    border-bottom: 1px solid #ddd;
+}
+
+.client-item:nth-child(odd) {
+    border-right: 1px solid #ddd;
+}
+
+.client-item:nth-last-child(-n+2) {
+    border-bottom: 0;
+}
+
+.client-label {
+    font-size: 10px;
+
+    text-transform: uppercase;
+
+    letter-spacing: 1.5px;
+
+    color: #777;
+
+    font-weight: 900;
+}
+
+.client-value {
+    margin-top: 4px;
+
+    font-size: 17px;
+
+    font-weight: 800;
+}
+
+
+/* =========================================================
+   PLAN BANNER
+========================================================= */
+
+.plan-banner {
+    padding: 22px;
+
+    border-radius: 13px;
+
+    background: #fff4ef;
+
+    border-left: 5px solid var(--orange);
+
+    margin-bottom: 30px;
+}
+
+.plan-banner-label {
+    font-size: 11px;
+
+    text-transform: uppercase;
+
+    letter-spacing: 2px;
+
+    font-weight: 900;
+
+    color: #777;
+}
+
+.plan-banner-name {
+    margin-top: 4px;
+
+    font-size: 27px;
+
+    font-weight: 900;
+
+    color: var(--orange);
+}
+
+.plan-banner-price {
+    font-size: 14px;
+
+    color: #555;
+}
+
+
+/* =========================================================
+   WORKFLOW
+========================================================= */
+
+.workflow-heading {
+    font-size: 27px;
+
+    font-weight: 900;
+
+    margin: 30px 0 18px;
+}
+
+.workflow-heading span {
     color: var(--orange);
 }
 
 .week {
     border: 1px solid #ddd;
-    border-top: 0;
-    padding: 30px;
-    background: rgba(255,255,255,0.96);
-}
 
-.week:last-child {
-    border-radius: 0 0 16px 16px;
+    border-radius: 13px;
+
+    margin-bottom: 16px;
+
+    padding: 25px;
+
+    background: white;
+
+    break-inside: avoid;
 }
 
 .week-title {
     color: var(--orange);
-    font-size: 22px;
+
+    font-size: 20px;
+
     font-weight: 900;
-    margin-bottom: 15px;
+
+    margin-bottom: 13px;
 }
 
 .week ul {
-    padding-left: 22px;
+    padding-left: 21px;
+
     margin: 0;
 }
 
 .week li {
-    margin-bottom: 9px;
+    margin-bottom: 8px;
 }
+
+.week li:last-child {
+    margin-bottom: 0;
+}
+
+
+/* =========================================================
+   TOTAL
+========================================================= */
 
 .total {
     margin-top: 25px;
+
     padding: 20px;
+
     background: var(--orange);
+
     color: white;
+
     border-radius: 12px;
+
     font-weight: 800;
 }
 
-/* =========================================
-   PDF AREA
-========================================= */
+
+/* =========================================================
+   DOCUMENT FOOTER
+========================================================= */
+
+.document-footer {
+    margin-top: 35px;
+
+    padding-top: 28px;
+
+    border-top: 2px solid var(--orange);
+
+    text-align: center;
+}
+
+.document-footer .grow {
+    color: var(--orange);
+
+    font-size: 26px;
+
+    font-weight: 900;
+}
+
+.document-footer p {
+    margin: 7px 0 0;
+}
+
+.document-footer strong {
+    color: var(--orange);
+}
+
+
+/* =========================================================
+   PDF ACTION AREA
+========================================================= */
 
 .pdf-area {
-    margin: 40px 0 70px;
+    display: none;
+
+    margin: 30px 0 70px;
+
     padding: 30px;
+
     border: 2px dashed var(--orange);
+
     border-radius: 15px;
+
     text-align: center;
+
     background: #fffaf8;
+}
+
+.pdf-area.show {
+    display: block;
 }
 
 .pdf-area h3 {
     margin-top: 0;
+
+    font-size: 22px;
 }
 
-.print-button {
-    display: inline-block;
-    background: black;
-    color: white;
-    padding: 14px 28px;
-    border-radius: 9px;
-    text-decoration: none;
-    font-weight: 800;
-}
-
-.print-button:hover {
-    background: var(--orange);
-}
-
-.print-note {
-    margin-top: 12px;
+.pdf-area p {
     color: #666;
-    font-size: 13px;
 }
 
-/* =========================================
+
+/* =========================================================
    FOOTER
-========================================= */
+========================================================= */
 
 footer {
     background: black;
+
     color: white;
+
     padding: 45px 0;
+
     text-align: center;
+
+    margin-top: 60px;
 }
 
 footer .grow {
     color: var(--orange);
+
     font-size: 28px;
+
     font-weight: 900;
 }
 
@@ -455,1214 +861,1962 @@ footer strong {
     color: var(--orange);
 }
 
-/* =========================================
+
+/* =========================================================
    MOBILE
-========================================= */
+========================================================= */
 
 @media (max-width: 800px) {
 
     .grid,
-    .plans {
+    .plans,
+    .client-info {
         grid-template-columns: 1fr;
+    }
+
+    .client-item:nth-child(odd) {
+        border-right: 0;
+    }
+
+    .client-item {
+        border-bottom: 1px solid #ddd !important;
+    }
+
+    .client-item:last-child {
+        border-bottom: 0 !important;
     }
 
     .form-card {
         padding: 20px;
     }
 
-    .workflow-header,
+    .document-header,
+    .document-body {
+        padding: 25px;
+    }
+
     .week {
-        padding: 22px;
+        padding: 20px;
     }
 
     h1 {
         letter-spacing: -1px;
     }
+
+    .submit-button {
+        width: 100%;
+    }
 }
 
-/* =========================================
+
+/* =========================================================
    PRINT / PDF
-========================================= */
+========================================================= */
 
 @media print {
 
-    body {
-        background: white;
-        color: black;
+    @page {
+        size: A4;
+        margin: 15mm;
     }
 
-    /*
-       IMPORTANT:
-       Hide the large website watermark in PDF.
-    */
+    body {
+        background: white !important;
+        color: black !important;
+    }
 
-    .watermark {
+    /* -----------------------------------------------------
+       HIDE NORMAL WEBSITE ELEMENTS
+    ----------------------------------------------------- */
+
+    .watermark,
+    header,
+    main > .section:not(#generatedSection),
+    #pdfArea,
+    footer {
         display: none !important;
     }
 
-    /*
-       PDF LOGO:
-       Clearly visible in the TOP RIGHT corner.
-    */
+    /* -----------------------------------------------------
+       SHOW ONLY GENERATED WORKFLOW
+    ----------------------------------------------------- */
+
+    #generatedSection {
+        display: block !important;
+
+        margin: 0 !important;
+    }
+
+    #generatedSection > .section-title {
+        display: none !important;
+    }
+
+    #generatedResult {
+        display: block !important;
+
+        visibility: visible !important;
+
+        border: 0 !important;
+
+        box-shadow: none !important;
+
+        border-radius: 0 !important;
+
+        overflow: visible !important;
+
+        background: white !important;
+    }
+
+    /* -----------------------------------------------------
+       LOGO - TOP RIGHT OF PDF
+    ----------------------------------------------------- */
 
     body::before {
         content: "";
+
         position: fixed;
-        top: 15px;
-        right: 20px;
-        width: 110px;
-        height: 70px;
+
+        top: 8mm;
+
+        right: 10mm;
+
+        width: 35mm;
+
+        height: 22mm;
 
         background-image: url("logo.png");
+
         background-repeat: no-repeat;
+
         background-position: center;
+
         background-size: contain;
 
         opacity: 1;
+
         z-index: 9999;
     }
 
-    /*
-       Give the PDF header enough space
-       so the logo does not overlap.
-    */
+    /* -----------------------------------------------------
+       DOCUMENT HEADER
+    ----------------------------------------------------- */
 
-    header {
-        padding-top: 80px;
-    }
+    .document-header {
+        background: white !important;
 
-    /*
-       Hide website controls from PDF.
-    */
+        color: black !important;
 
-    .submit-area,
-    .pdf-area {
-        display: none !important;
-    }
+        padding: 20mm 0 8mm !important;
 
-    /*
-       Only show selected workflow.
-    */
-
-    .workflow {
-        display: none !important;
-    }
-
-    body:has(#basic:checked) #basic-workflow,
-    body:has(#advanced:checked) #advanced-workflow,
-    body:has(#premium:checked) #premium-workflow {
-        display: block !important;
-    }
-
-    /*
-       PDF workflow styling.
-    */
-
-    .workflow-header {
-        color: black;
-        background: white;
         border-bottom: 3px solid var(--orange);
     }
 
+    .document-header::after {
+        display: none;
+    }
+
+    .document-brand {
+        color: var(--orange) !important;
+    }
+
+    .document-title {
+        color: black !important;
+    }
+
+    .document-title span {
+        color: var(--orange) !important;
+    }
+
+    /* -----------------------------------------------------
+       DOCUMENT BODY
+    ----------------------------------------------------- */
+
+    .document-body {
+        padding: 8mm 0 0 !important;
+    }
+
+    /* -----------------------------------------------------
+       KEEP IMPORTANT BLOCKS TOGETHER
+    ----------------------------------------------------- */
+
     .week {
         break-inside: avoid;
+
+        page-break-inside: avoid;
+
+        box-shadow: none !important;
     }
 
-    /*
-       Footer in PDF.
-    */
+    .client-info {
+        break-inside: avoid;
 
-    footer {
-        color: black;
-        background: white;
-        border-top: 2px solid var(--orange);
+        page-break-inside: avoid;
     }
+
+    .plan-banner {
+        break-inside: avoid;
+
+        page-break-inside: avoid;
+    }
+
+    .total {
+        break-inside: avoid;
+
+        page-break-inside: avoid;
+    }
+
+    .document-footer {
+        break-inside: avoid;
+
+        page-break-inside: avoid;
+    }
+
+    .workflow-document {
+        box-shadow: none !important;
+    }
+
 }
 
+
+/* =========================================================
+   END CSS
+========================================================= */
+
 </style>
+
 </head>
 
 
 <body>
 
-<!-- =========================================
-     LARGE WEBSITE WATERMARK
+
+<!-- ========================================================
+     WEBSITE WATERMARK
      
-     Keep logo.png in the same folder.
-========================================= -->
+     Keep logo.png in the same folder as index.html
+========================================================= -->
 
 <div class="watermark">
-    <img src="logo.png" alt="JSONS Logo Watermark">
+
+    <img
+        src="logo.png"
+        alt="JSONS Logo"
+    >
+
 </div>
 
+
+<!-- ========================================================
+     APPLICATION
+========================================================= -->
 
 <div class="app">
 
 
-<!-- =========================================
-     HEADER
-========================================= -->
+    <!-- ====================================================
+         HEADER
+    ===================================================== -->
 
-<header>
+    <header>
 
-    <div class="container">
+        <div class="container">
 
-        <div class="brand">
-            JSONS PROJECT MANAGER
+            <div class="brand">
+                JSONS PROJECT MANAGER
+            </div>
+
+            <h1>
+                Project <span>Workflow</span>
+            </h1>
+
+            <div class="subtitle">
+                Build. Manage. Grow.
+            </div>
+
         </div>
 
-        <h1>
-            Project <span>Workflow</span>
-        </h1>
-
-        <div class="subtitle">
-            Build. Manage. Grow.
-        </div>
-
-    </div>
-
-</header>
+    </header>
 
 
-<main class="container">
+    <!-- ====================================================
+         MAIN
+    ===================================================== -->
+
+    <main class="container">
 
 
-<!-- =========================================
-     CLIENT INFORMATION
-========================================= -->
+        <!-- =================================================
+             SECTION 01
+             CLIENT INFORMATION
+        ================================================== -->
 
-<section class="section">
+        <section class="section">
 
-    <div class="section-title">
+            <div class="section-title">
 
-        <div class="section-number">
-            01
-        </div>
+                <div class="section-number">
+                    01
+                </div>
 
-        <h2>
-            Client Information
-        </h2>
-
-    </div>
-
-
-    <div class="form-card">
-
-        <div class="grid">
-
-
-            <div class="field">
-
-                <label>
-                    Client Name <span>*</span>
-                </label>
-
-                <input
-                    type="text"
-                    name="client_name"
-                    placeholder="Enter client name"
-                >
+                <h2>
+                    Client Information
+                </h2>
 
             </div>
 
 
-            <div class="field">
+            <div class="form-card">
 
-                <label>
-                    POC Name <span>*</span>
-                </label>
+                <div class="grid">
 
-                <input
-                    type="text"
-                    name="poc_name"
-                    placeholder="Enter point of contact"
-                >
+
+                    <!-- CLIENT NAME -->
+
+                    <div class="field">
+
+                        <label for="clientName">
+                            Client Name <span>*</span>
+                        </label>
+
+                        <input
+                            type="text"
+                            id="clientName"
+                            placeholder="Enter client name"
+                            autocomplete="organization"
+                        >
+
+                    </div>
+
+
+                    <!-- POC -->
+
+                    <div class="field">
+
+                        <label for="pocName">
+                            POC Name <span>*</span>
+                        </label>
+
+                        <input
+                            type="text"
+                            id="pocName"
+                            placeholder="Enter point of contact"
+                            autocomplete="name"
+                        >
+
+                    </div>
+
+
+                    <!-- MOBILE -->
+
+                    <div class="field">
+
+                        <label for="mobile">
+                            Mobile Number <span>*</span>
+                        </label>
+
+                        <input
+                            type="tel"
+                            id="mobile"
+                            placeholder="Enter mobile number"
+                            autocomplete="tel"
+                        >
+
+                    </div>
+
+
+                    <!-- EMAIL -->
+
+                    <div class="field">
+
+                        <label for="email">
+                            Email Address <span>*</span>
+                        </label>
+
+                        <input
+                            type="email"
+                            id="email"
+                            placeholder="Enter email address"
+                            autocomplete="email"
+                        >
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             SECTION 02
+             PROJECT DATES
+        ================================================== -->
+
+        <section class="section">
+
+            <div class="section-title">
+
+                <div class="section-number">
+                    02
+                </div>
+
+                <h2>
+                    Project Dates
+                </h2>
 
             </div>
 
 
-            <div class="field">
+            <div class="form-card">
 
-                <label>
-                    Mobile Number <span>*</span>
-                </label>
+                <div class="grid">
 
-                <input
-                    type="tel"
-                    name="mobile"
-                    placeholder="Enter mobile number"
-                >
+
+                    <!-- START DATE -->
+
+                    <div class="field">
+
+                        <label for="startDate">
+                            Project Start Date <span>*</span>
+                        </label>
+
+                        <input
+                            type="date"
+                            id="startDate"
+                        >
+
+                    </div>
+
+
+                    <!-- END DATE -->
+
+                    <div class="field">
+
+                        <label for="endDate">
+                            Project End Date
+                        </label>
+
+                        <input
+                            type="date"
+                            id="endDate"
+                            readonly
+                        >
+
+                        <div class="date-help">
+                            Automatically calculated as 30 days from the
+                            project start date.
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             SECTION 03
+             PLAN SELECTION
+        ================================================== -->
+
+        <section class="section">
+
+            <div class="section-title">
+
+                <div class="section-number">
+                    03
+                </div>
+
+                <h2>
+                    Select Plan
+                </h2>
 
             </div>
 
 
-            <div class="field">
+            <div class="plans">
 
-                <label>
-                    Email Address <span>*</span>
-                </label>
 
-                <input
-                    type="email"
-                    name="email"
-                    placeholder="Enter email address"
-                >
+                <!-- =================================================
+                     BASIC PLAN
+                ================================================== -->
+
+                <div>
+
+                    <input
+                        class="plan-radio"
+                        type="radio"
+                        name="plan"
+                        id="basic"
+                        value="basic"
+                        checked
+                    >
+
+                    <label
+                        class="plan-label"
+                        for="basic"
+                    >
+
+                        <div class="plan-name">
+
+                            <strong>
+                                Basic Plan
+                            </strong>
+
+                            <div class="radio-circle"></div>
+
+                        </div>
+
+
+                        <div class="plan-price">
+
+                            ₹5,000
+
+                            <small>
+                                /month
+                            </small>
+
+                        </div>
+
+
+                        <div class="plan-description">
+
+                            8 Posts + 4 Reels + Instagram & Facebook
+                            Management + Chat Automation
+
+                        </div>
+
+                    </label>
+
+                </div>
+
+
+                <!-- =================================================
+                     ADVANCED PLAN
+                ================================================== -->
+
+                <div>
+
+                    <input
+                        class="plan-radio"
+                        type="radio"
+                        name="plan"
+                        id="advanced"
+                        value="advanced"
+                    >
+
+                    <label
+                        class="plan-label"
+                        for="advanced"
+                    >
+
+                        <div class="plan-name">
+
+                            <strong>
+                                Advanced Plan
+                            </strong>
+
+                            <div class="radio-circle"></div>
+
+                        </div>
+
+
+                        <div class="plan-price">
+
+                            ₹7,500
+
+                            <small>
+                                /month
+                            </small>
+
+                        </div>
+
+
+                        <div class="plan-description">
+
+                            16 Posts + 8 Reels + Social Media +
+                            Google My Business + Meta Ads + Leads
+
+                        </div>
+
+                    </label>
+
+                </div>
+
+
+                <!-- =================================================
+                     PREMIUM PLAN
+                ================================================== -->
+
+                <div>
+
+                    <input
+                        class="plan-radio"
+                        type="radio"
+                        name="plan"
+                        id="premium"
+                        value="premium"
+                    >
+
+                    <label
+                        class="plan-label"
+                        for="premium"
+                    >
+
+                        <div class="plan-name">
+
+                            <strong>
+                                Premium Plan
+                            </strong>
+
+                            <div class="radio-circle"></div>
+
+                        </div>
+
+
+                        <div class="plan-price">
+
+                            ₹9,999
+
+                            <small>
+                                /month
+                            </small>
+
+                        </div>
+
+
+                        <div class="plan-description">
+
+                            Complete marketing package +
+                            Website / Webpage Development
+
+                        </div>
+
+                    </label>
+
+                </div>
 
             </div>
 
 
-        </div>
+            <!-- ERROR -->
 
-    </div>
-
-</section>
-
-
-<!-- =========================================
-     PROJECT DATES
-========================================= -->
-
-<section class="section">
-
-    <div class="section-title">
-
-        <div class="section-number">
-            02
-        </div>
-
-        <h2>
-            Project Dates
-        </h2>
-
-    </div>
+            <div
+                id="errorMessage"
+                class="error-message"
+            ></div>
 
 
-    <div class="form-card">
+            <!-- GENERATE -->
 
-        <div class="grid">
+            <div class="submit-area">
 
-
-            <div class="field">
-
-                <label>
-                    Project Start Date <span>*</span>
-                </label>
-
-                <input
-                    type="date"
-                    name="start_date"
+                <button
+                    type="button"
+                    class="submit-button"
+                    id="generateButton"
                 >
+                    GENERATE PROJECT WORKFLOW
+                </button>
 
             </div>
 
-
-            <div class="field">
-
-                <label>
-                    Project End Date
-                </label>
-
-                <input
-                    type="date"
-                    name="end_date"
-                    readonly
-                    placeholder="30th day from start date"
-                >
-
-            </div>
+        </section>
 
 
-        </div>
+        <!-- =================================================
+             SECTION 04
+             GENERATED WORKFLOW
+        ================================================== -->
 
-    </div>
-
-</section>
-
-
-<!-- =========================================
-     SELECT PLAN
-========================================= -->
-
-<section class="section">
-
-    <div class="section-title">
-
-        <div class="section-number">
-            03
-        </div>
-
-        <h2>
-            Select Plan
-        </h2>
-
-    </div>
-
-
-    <div class="plans">
-
-
-        <!-- BASIC -->
-
-        <div>
-
-            <input
-                class="plan-radio"
-                type="radio"
-                name="plan"
-                id="basic"
-                checked
-            >
-
-            <label
-                class="plan-label"
-                for="basic"
-            >
-
-                <div class="plan-name">
-
-                    <strong>
-                        Basic Plan
-                    </strong>
-
-                    <div class="radio-circle"></div>
-
-                </div>
-
-                <div class="plan-price">
-                    ₹5,000
-                    <small>/month</small>
-                </div>
-
-                <div class="plan-description">
-                    8 Posts + 4 Reels + Instagram &
-                    Facebook Management + Chat Automation
-                </div>
-
-            </label>
-
-        </div>
-
-
-        <!-- ADVANCED -->
-
-        <div>
-
-            <input
-                class="plan-radio"
-                type="radio"
-                name="plan"
-                id="advanced"
-            >
-
-            <label
-                class="plan-label"
-                for="advanced"
-            >
-
-                <div class="plan-name">
-
-                    <strong>
-                        Advanced Plan
-                    </strong>
-
-                    <div class="radio-circle"></div>
-
-                </div>
-
-                <div class="plan-price">
-                    ₹7,500
-                    <small>/month</small>
-                </div>
-
-                <div class="plan-description">
-                    16 Posts + 8 Reels + Social Media +
-                    Google Business + Meta Ads + Leads
-                </div>
-
-            </label>
-
-        </div>
-
-
-        <!-- PREMIUM -->
-
-        <div>
-
-            <input
-                class="plan-radio"
-                type="radio"
-                name="plan"
-                id="premium"
-            >
-
-            <label
-                class="plan-label"
-                for="premium"
-            >
-
-                <div class="plan-name">
-
-                    <strong>
-                        Premium Plan
-                    </strong>
-
-                    <div class="radio-circle"></div>
-
-                </div>
-
-                <div class="plan-price">
-                    ₹9,999
-                    <small>/month</small>
-                </div>
-
-                <div class="plan-description">
-                    Complete marketing package +
-                    Website / Webpage Development
-                </div>
-
-            </label>
-
-        </div>
-
-
-    </div>
-
-
-    <!-- GENERATE BUTTON -->
-
-    <div class="submit-area">
-
-        <a
-            href="#workflow"
-            class="submit-button"
+        <section
+            class="section"
+            id="generatedSection"
+            style="display:none;"
         >
-            GENERATE PROJECT WORKFLOW
-        </a>
 
-    </div>
+            <div class="section-title">
 
-</section>
+                <div class="section-number">
+                    04
+                </div>
 
+                <h2>
+                    Generated Workflow
+                </h2>
 
-<!-- =========================================
-     WORKFLOW RESULT
-========================================= -->
-
-<section
-    class="section"
-    id="workflow"
->
+            </div>
 
 
-<!-- =========================================
-     BASIC WORKFLOW
-========================================= -->
+            <div
+                id="generatedResult"
+                class="workflow-document"
+            >
 
-<div
-    class="workflow"
-    id="basic-workflow"
->
+                <!-- JavaScript generates workflow here -->
 
-    <div class="workflow-header">
+            </div>
 
-        <h2>
-
-            <span class="orange">
-                Basic Plan
-            </span>
-
-            — 4 Week Workflow
-
-        </h2>
-
-        <p>
-            ₹5,000 / month
-        </p>
-
-    </div>
+        </section>
 
 
-    <div class="week">
+        <!-- =================================================
+             PDF AREA
+        ================================================== -->
 
-        <div class="week-title">
-            Week 1 — Setup & Content Planning
+        <div
+            class="pdf-area"
+            id="pdfArea"
+        >
+
+            <h3>
+                Ready to share this workflow?
+            </h3>
+
+            <p>
+                Your client workflow is ready.
+                Click below and choose <strong>Save as PDF</strong>.
+            </p>
+
+
+            <div class="button-row">
+
+                <button
+                    type="button"
+                    class="pdf-button"
+                    id="pdfButton"
+                >
+                    DOWNLOAD / SAVE AS PDF
+                </button>
+
+
+                <button
+                    type="button"
+                    class="reset-button"
+                    id="resetButton"
+                >
+                    CREATE NEW PROJECT
+                </button>
+
+            </div>
+
         </div>
 
-        <ul>
-
-            <li>
-                Review the business, services, target audience and existing social media pages.
-            </li>
-
-            <li>
-                Prepare the Week 1 content plan.
-            </li>
-
-            <li>
-                Create and publish 2 posts.
-            </li>
-
-            <li>
-                Create and publish 1 Reel.
-            </li>
-
-            <li>
-                Review/optimize Instagram & Facebook profiles.
-            </li>
-
-            <li>
-                Set up or review basic chat automation for common customer questions.
-            </li>
-
-        </ul>
-
-    </div>
+    </main>
 
 
-    <div class="week">
+    <!-- ====================================================
+         WEBSITE FOOTER
+    ===================================================== -->
 
-        <div class="week-title">
-            Week 2 — Consistent Content & Engagement
+    <footer>
+
+        <div class="container">
+
+            <div class="grow">
+                Ready to Grow Your Brand?
+            </div>
+
+            <p>
+                Contact us :
+                <strong>8610817060</strong>
+            </p>
+
         </div>
 
-        <ul>
+    </footer>
 
-            <li>
-                Create and publish 2 posts.
-            </li>
-
-            <li>
-                Create and publish 1 Reel.
-            </li>
-
-            <li>
-                Monitor comments and messages.
-            </li>
-
-            <li>
-                Manage Instagram & Facebook activity.
-            </li>
-
-            <li>
-                Check whether customers are responding to automated chat messages.
-            </li>
-
-            <li>
-                Make minor content adjustments based on engagement.
-            </li>
-
-        </ul>
-
-    </div>
-
-
-    <div class="week">
-
-        <div class="week-title">
-            Week 3 — Engagement & Content Improvement
-        </div>
-
-        <ul>
-
-            <li>
-                Create and publish 2 posts.
-            </li>
-
-            <li>
-                Create and publish 1 Reel.
-            </li>
-
-            <li>
-                Continue social media management.
-            </li>
-
-            <li>
-                Monitor audience engagement, comments and inquiries.
-            </li>
-
-            <li>
-                Improve chat responses based on frequently asked questions.
-            </li>
-
-            <li>
-                Review which content is performing better.
-            </li>
-
-        </ul>
-
-    </div>
-
-
-    <div class="week">
-
-        <div class="week-title">
-            Week 4 — Final Content & Monthly Review
-        </div>
-
-        <ul>
-
-            <li>
-                Create and publish 2 posts.
-            </li>
-
-            <li>
-                Create and publish 1 Reel.
-            </li>
-
-            <li>
-                Continue Instagram & Facebook management.
-            </li>
-
-            <li>
-                Monitor customer messages and engagement.
-            </li>
-
-            <li>
-                Review monthly content performance.
-            </li>
-
-            <li>
-                Identify the best-performing posts/Reels and prepare ideas for the next month.
-            </li>
-
-        </ul>
-
-    </div>
-
-
-    <div class="total">
-
-        Total: 8 Posts + 4 Reels +
-        Social Media Management +
-        Chat Automation
-
-    </div>
 
 </div>
 
 
-<!-- =========================================
-     ADVANCED WORKFLOW
-========================================= -->
+<!-- ========================================================
+     JAVASCRIPT
+========================================================= -->
 
-<div
-    class="workflow"
-    id="advanced-workflow"
->
+<script>
 
-    <div class="workflow-header">
 
-        <h2>
+/* =========================================================
+   WORKFLOW DATA
+========================================================= */
 
-            <span class="orange">
-                Advanced Plan
-            </span>
+const workflows = {
 
-            — 4 Week Workflow
 
-        </h2>
+    /* =====================================================
+       BASIC
+    ===================================================== */
 
-        <p>
-            ₹7,500 / month
-        </p>
+    basic: {
 
-    </div>
+        name: "Basic Plan",
 
+        price: "₹5,000 / month",
 
-    <div class="week">
+        total:
+            "8 Posts + 4 Reels + Social Media Management + Chat Automation",
 
-        <div class="week-title">
-            Week 1 — Strategy, Content & Lead Setup
-        </div>
+        weeks: [
 
-        <ul>
+            {
+                title:
+                    "Week 1 — Setup & Content Planning",
 
-            <li>
-                Review business goals, target customers and previous social media performance.
-            </li>
+                items: [
 
-            <li>
-                Prepare the monthly content strategy.
-            </li>
+                    "Review the business, services, target audience and existing social media pages.",
 
-            <li>
-                Create and publish 4 posts.
-            </li>
+                    "Prepare the Week 1 content plan.",
 
-            <li>
-                Create and publish 2 Reels.
-            </li>
+                    "Create and publish 2 posts.",
 
-            <li>
-                Optimize/manage Instagram & Facebook.
-            </li>
+                    "Create and publish 1 Reel.",
 
-            <li>
-                Review and configure Chat Automation.
-            </li>
+                    "Review/optimize Instagram & Facebook profiles.",
 
-            <li>
-                Optimize/update Google My Business.
-            </li>
+                    "Set up or review basic chat automation for common customer questions."
 
-            <li>
-                Prepare the first Reel for Meta Ads.
-            </li>
+                ]
+            },
 
-            <li>
-                Set up the lead management process.
-            </li>
 
-        </ul>
+            {
+                title:
+                    "Week 2 — Consistent Content & Engagement",
 
-    </div>
+                items: [
 
+                    "Create and publish 2 posts.",
 
-    <div class="week">
+                    "Create and publish 1 Reel.",
 
-        <div class="week-title">
-            Week 2 — Content + Advertising + Leads
-        </div>
+                    "Monitor comments and messages.",
 
-        <ul>
+                    "Manage Instagram & Facebook activity.",
 
-            <li>
-                Create and publish 4 posts.
-            </li>
+                    "Check whether customers are responding to automated chat messages.",
 
-            <li>
-                Create and publish 2 Reels.
-            </li>
+                    "Make minor content adjustments based on engagement."
 
-            <li>
-                Monitor Instagram & Facebook engagement.
-            </li>
+                ]
+            },
 
-            <li>
-                Monitor Google My Business activity.
-            </li>
 
-            <li>
-                Run/monitor Meta Reel Ads.
-            </li>
+            {
+                title:
+                    "Week 3 — Engagement & Content Improvement",
 
-            <li>
-                Check incoming leads.
-            </li>
+                items: [
 
-            <li>
-                Organize leads and follow up according to the agreed process.
-            </li>
+                    "Create and publish 2 posts.",
 
-            <li>
-                Review chat automation performance.
-            </li>
+                    "Create and publish 1 Reel.",
 
-        </ul>
+                    "Continue social media management.",
 
-    </div>
+                    "Monitor audience engagement, comments and inquiries.",
 
+                    "Improve chat responses based on frequently asked questions.",
 
-    <div class="week">
+                    "Review which content is performing better."
 
-        <div class="week-title">
-            Week 3 — Performance Optimization
-        </div>
+                ]
+            },
 
-        <ul>
 
-            <li>
-                Create and publish 4 posts.
-            </li>
+            {
+                title:
+                    "Week 4 — Final Content & Monthly Review",
 
-            <li>
-                Create and publish 2 Reels.
-            </li>
+                items: [
 
-            <li>
-                Review engagement and audience response.
-            </li>
+                    "Create and publish 2 posts.",
 
-            <li>
-                Optimize Meta Reel Ads based on performance.
-            </li>
+                    "Create and publish 1 Reel.",
 
-            <li>
-                Monitor Google My Business.
-            </li>
+                    "Continue Instagram & Facebook management.",
 
-            <li>
-                Manage incoming leads.
-            </li>
+                    "Monitor customer messages and engagement.",
 
-            <li>
-                Identify frequently asked customer questions and improve chat automation.
-            </li>
+                    "Review monthly content performance.",
 
-            <li>
-                Adjust upcoming content based on performance.
-            </li>
+                    "Identify the best-performing posts/Reels and prepare ideas for the next month."
 
-        </ul>
+                ]
+            }
 
-    </div>
+        ]
 
+    },
 
-    <div class="week">
 
-        <div class="week-title">
-            Week 4 — Final Content + Monthly Reporting
-        </div>
+    /* =====================================================
+       ADVANCED
+    ===================================================== */
 
-        <ul>
+    advanced: {
 
-            <li>
-                Create and publish 4 posts.
-            </li>
+        name: "Advanced Plan",
 
-            <li>
-                Create and publish 2 Reels.
-            </li>
+        price: "₹7,500 / month",
 
-            <li>
-                Continue Instagram & Facebook management.
-            </li>
+        total:
+            "16 Posts + 8 Reels + Social Media + Chat Automation + Google My Business + Meta Reel Ads + Leads Management",
 
-            <li>
-                Monitor Google My Business.
-            </li>
+        weeks: [
 
-            <li>
-                Review Meta Ads performance.
-            </li>
+            {
+                title:
+                    "Week 1 — Strategy, Content & Lead Setup",
 
-            <li>
-                Organize and review the month's leads.
-            </li>
+                items: [
 
-            <li>
-                Analyze which posts, Reels and ads generated the best response.
-            </li>
+                    "Review business goals, target customers and previous social media performance.",
 
-            <li>
-                Prepare the next month's content and advertising recommendations.
-            </li>
+                    "Prepare the monthly content strategy.",
 
-        </ul>
+                    "Create and publish 4 posts.",
 
-    </div>
+                    "Create and publish 2 Reels.",
 
+                    "Optimize/manage Instagram & Facebook.",
 
-    <div class="total">
+                    "Review and configure Chat Automation.",
 
-        Total: 16 Posts + 8 Reels +
-        Social Media + Chat Automation +
-        Google My Business + Meta Reel Ads +
-        Leads Management
+                    "Optimize/update Google My Business.",
 
-    </div>
+                    "Prepare the first Reel for Meta Ads.",
 
-</div>
+                    "Set up the lead management process."
 
+                ]
+            },
 
-<!-- =========================================
-     PREMIUM WORKFLOW
-========================================= -->
 
-<div
-    class="workflow"
-    id="premium-workflow"
->
+            {
+                title:
+                    "Week 2 — Content + Advertising + Leads",
 
-    <div class="workflow-header">
+                items: [
 
-        <h2>
+                    "Create and publish 4 posts.",
 
-            <span class="orange">
-                Premium Plan
-            </span>
+                    "Create and publish 2 Reels.",
 
-            — 4 Week Workflow
+                    "Monitor Instagram & Facebook engagement.",
 
-        </h2>
+                    "Monitor Google My Business activity.",
 
-        <p>
-            ₹9,999 / month
-        </p>
+                    "Run/monitor Meta Reel Ads.",
 
-    </div>
+                    "Check incoming leads.",
 
+                    "Organize leads and follow up according to the agreed process.",
 
-    <div class="week">
+                    "Review chat automation performance."
 
-        <div class="week-title">
-            Week 1 — Strategy + Website Planning
-        </div>
+                ]
+            },
 
-        <ul>
 
-            <li>
-                Understand the business, services, target audience and objectives.
-            </li>
+            {
+                title:
+                    "Week 3 — Performance Optimization",
 
-            <li>
-                Prepare the monthly social media strategy.
-            </li>
+                items: [
 
-            <li>
-                Create and publish 4 posts.
-            </li>
+                    "Create and publish 4 posts.",
 
-            <li>
-                Create and publish 2 Reels.
-            </li>
+                    "Create and publish 2 Reels.",
 
-            <li>
-                Manage Instagram & Facebook.
-            </li>
+                    "Review engagement and audience response.",
 
-            <li>
-                Set up/review Chat Automation.
-            </li>
+                    "Optimize Meta Reel Ads based on performance.",
 
-            <li>
-                Optimize Google My Business.
-            </li>
+                    "Monitor Google My Business.",
 
-            <li>
-                Plan Meta Reel Ads.
-            </li>
+                    "Manage incoming leads.",
 
-            <li>
-                Set up lead management.
-            </li>
+                    "Identify frequently asked customer questions and improve chat automation.",
 
-            <li>
-                Website/Webpage: collect required business information, images, logo, services, contact details and decide the website structure.
-            </li>
+                    "Adjust upcoming content based on performance."
 
-        </ul>
+                ]
+            },
 
-    </div>
 
+            {
+                title:
+                    "Week 4 — Final Content + Monthly Reporting",
 
-    <div class="week">
+                items: [
 
-        <div class="week-title">
-            Week 2 — Content + Website Development
-        </div>
+                    "Create and publish 4 posts.",
 
-        <ul>
+                    "Create and publish 2 Reels.",
 
-            <li>
-                Create and publish 4 posts.
-            </li>
+                    "Continue Instagram & Facebook management.",
 
-            <li>
-                Create and publish 2 Reels.
-            </li>
+                    "Monitor Google My Business.",
 
-            <li>
-                Manage Instagram & Facebook.
-            </li>
+                    "Review Meta Ads performance.",
 
-            <li>
-                Monitor Google My Business.
-            </li>
+                    "Organize and review the month's leads.",
 
-            <li>
-                Start/continue Meta Reel Ads.
-            </li>
+                    "Analyze which posts, Reels and ads generated the best response.",
 
-            <li>
-                Monitor and organize incoming leads.
-            </li>
+                    "Prepare the next month's content and advertising recommendations."
 
-            <li>
-                Optimize chat automation.
-            </li>
+                ]
+            }
 
-            <li>
-                Website/Webpage: develop the main pages/sections such as Home, About, Services, Contact, etc.
-            </li>
+        ]
 
-        </ul>
+    },
 
-    </div>
 
+    /* =====================================================
+       PREMIUM
+    ===================================================== */
 
-    <div class="week">
+    premium: {
 
-        <div class="week-title">
-            Week 3 — Optimization + Website Review
-        </div>
+        name: "Premium Plan",
 
-        <ul>
+        price: "₹9,999 / month",
 
-            <li>
-                Create and publish 4 posts.
-            </li>
+        total:
+            "16 Posts + 8 Reels + Social Media + Chat Automation + Google My Business + Meta Reel Ads + Leads Management + Webpage/Website Development",
 
-            <li>
-                Create and publish 2 Reels.
-            </li>
+        weeks: [
 
-            <li>
-                Monitor social media engagement.
-            </li>
+            {
+                title:
+                    "Week 1 — Strategy + Website Planning",
 
-            <li>
-                Optimize Meta Reel Ads.
-            </li>
+                items: [
 
-            <li>
-                Monitor Google My Business.
-            </li>
+                    "Understand the business, services, target audience and objectives.",
 
-            <li>
-                Manage leads and customer inquiries.
-            </li>
+                    "Prepare the monthly social media strategy.",
 
-            <li>
-                Review chat automation.
-            </li>
+                    "Create and publish 4 posts.",
 
-            <li>
-                Website/Webpage: add content, images, contact/lead forms and make responsive/mobile adjustments.
-            </li>
+                    "Create and publish 2 Reels.",
 
-            <li>
-                Share the website draft for review and collect required corrections.
-            </li>
+                    "Manage Instagram & Facebook.",
 
-        </ul>
+                    "Set up/review Chat Automation.",
 
-    </div>
+                    "Optimize Google My Business.",
 
+                    "Plan Meta Reel Ads.",
 
-    <div class="week">
+                    "Set up lead management.",
 
-        <div class="week-title">
-            Week 4 — Finalization + Monthly Review
-        </div>
+                    "Website/Webpage: collect required business information, images, logo, services, contact details and decide the website structure."
 
-        <ul>
+                ]
+            },
 
-            <li>
-                Create and publish 4 posts.
-            </li>
 
-            <li>
-                Create and publish 2 Reels.
-            </li>
+            {
+                title:
+                    "Week 2 — Content + Website Development",
 
-            <li>
-                Continue Instagram & Facebook management.
-            </li>
+                items: [
 
-            <li>
-                Monitor Google My Business.
-            </li>
+                    "Create and publish 4 posts.",
 
-            <li>
-                Review and optimize Meta Reel Ads.
-            </li>
+                    "Create and publish 2 Reels.",
 
-            <li>
-                Manage and organize monthly leads.
-            </li>
+                    "Manage Instagram & Facebook.",
 
-            <li>
-                Review chat automation.
-            </li>
+                    "Monitor Google My Business.",
 
-            <li>
-                Website/Webpage: complete agreed revisions, final testing and prepare the website/page for launch or handover.
-            </li>
+                    "Start/continue Meta Reel Ads.",
 
-            <li>
-                Review overall monthly performance and plan the next month's marketing activities.
-            </li>
+                    "Monitor and organize incoming leads.",
 
-        </ul>
+                    "Optimize chat automation.",
 
-    </div>
+                    "Website/Webpage: develop the main pages/sections such as Home, About, Services, Contact, etc."
 
+                ]
+            },
 
-    <div class="total">
 
-        Total: 16 Posts + 8 Reels +
-        Social Media + Chat Automation +
-        Google My Business + Meta Reel Ads +
-        Leads Management +
-        Webpage/Website Development
+            {
+                title:
+                    "Week 3 — Optimization + Website Review",
 
-    </div>
+                items: [
 
-</div>
+                    "Create and publish 4 posts.",
 
+                    "Create and publish 2 Reels.",
 
-</section>
+                    "Monitor social media engagement.",
 
+                    "Optimize Meta Reel Ads.",
 
-<!-- =========================================
-     PDF BUTTON
-========================================= -->
+                    "Monitor Google My Business.",
 
-<div class="pdf-area">
+                    "Manage leads and customer inquiries.",
 
-    <h3>
-        Ready to share this workflow?
-    </h3>
+                    "Review chat automation.",
 
-    <p>
-        Save the selected workflow as a professional PDF.
-    </p>
+                    "Website/Webpage: add content, images, contact/lead forms and make responsive/mobile adjustments.",
 
-    <a
-        href="#"
-        class="print-button"
-        onclick="window.print(); return false;"
-    >
-        SAVE AS PDF
-    </a>
+                    "Share the website draft for review and collect required corrections."
 
-    <div class="print-note">
+                ]
+            },
 
-        Your browser will open the Print window.
-        Choose <strong>Save as PDF</strong>.
 
-    </div>
+            {
+                title:
+                    "Week 4 — Finalization + Monthly Review",
 
-</div>
+                items: [
 
+                    "Create and publish 4 posts.",
 
-</main>
+                    "Create and publish 2 Reels.",
 
+                    "Continue Instagram & Facebook management.",
 
-<!-- =========================================
-     FOOTER
-========================================= -->
+                    "Monitor Google My Business.",
 
-<footer>
+                    "Review and optimize Meta Reel Ads.",
 
-    <div class="container">
+                    "Manage and organize monthly leads.",
 
-        <div class="grow">
-            Ready to Grow Your Brand?
-        </div>
+                    "Review chat automation.",
 
-        <p>
-            Contact us :
-            <strong>8610817060</strong>
-        </p>
+                    "Website/Webpage: complete agreed revisions, final testing and prepare the website/page for launch or handover.",
 
-    </div>
+                    "Review overall monthly performance and plan the next month's marketing activities."
 
-</footer>
+                ]
+            }
 
+        ]
 
-</div>
+    }
+
+};
+
+
+/* =========================================================
+   ELEMENTS
+========================================================= */
+
+const clientName =
+    document.getElementById("clientName");
+
+const pocName =
+    document.getElementById("pocName");
+
+const mobile =
+    document.getElementById("mobile");
+
+const email =
+    document.getElementById("email");
+
+const startDate =
+    document.getElementById("startDate");
+
+const endDate =
+    document.getElementById("endDate");
+
+const generateButton =
+    document.getElementById("generateButton");
+
+const pdfButton =
+    document.getElementById("pdfButton");
+
+const resetButton =
+    document.getElementById("resetButton");
+
+const generatedSection =
+    document.getElementById("generatedSection");
+
+const generatedResult =
+    document.getElementById("generatedResult");
+
+const pdfArea =
+    document.getElementById("pdfArea");
+
+const errorMessage =
+    document.getElementById("errorMessage");
+
+
+/* =========================================================
+   DATE CALCULATION
+========================================================= */
+
+startDate.addEventListener(
+    "change",
+    function () {
+
+        if (!this.value) {
+
+            endDate.value = "";
+
+            return;
+        }
+
+
+        const date =
+            new Date(
+                this.value + "T00:00:00"
+            );
+
+
+        /* START DATE + 30 DAYS */
+
+        date.setDate(
+            date.getDate() + 30
+        );
+
+
+        endDate.value =
+            formatDateForInput(date);
+
+    }
+);
+
+
+/* =========================================================
+   FORMAT DATE FOR INPUT
+========================================================= */
+
+function formatDateForInput(date) {
+
+    const year =
+        date.getFullYear();
+
+    const month =
+        String(
+            date.getMonth() + 1
+        ).padStart(2, "0");
+
+    const day =
+        String(
+            date.getDate()
+        ).padStart(2, "0");
+
+
+    return `${year}-${month}-${day}`;
+
+}
+
+
+/* =========================================================
+   FORMAT DATE FOR DISPLAY
+========================================================= */
+
+function formatDisplayDate(value) {
+
+    if (!value) {
+
+        return "-";
+
+    }
+
+
+    const date =
+        new Date(
+            value + "T00:00:00"
+        );
+
+
+    return date.toLocaleDateString(
+        "en-IN",
+        {
+            day: "2-digit",
+            month: "short",
+            year: "numeric"
+        }
+    );
+
+}
+
+
+/* =========================================================
+   GET SELECTED PLAN
+========================================================= */
+
+function getSelectedPlan() {
+
+    const selected =
+        document.querySelector(
+            'input[name="plan"]:checked'
+        );
+
+
+    return selected
+        ? selected.value
+        : null;
+
+}
+
+
+/* =========================================================
+   ESCAPE HTML
+========================================================= */
+
+function escapeHTML(value) {
+
+    return String(value)
+
+        .replace(
+            /&/g,
+            "&amp;"
+        )
+
+        .replace(
+            /</g,
+            "&lt;"
+        )
+
+        .replace(
+            />/g,
+            "&gt;"
+        )
+
+        .replace(
+            /"/g,
+            "&quot;"
+        )
+
+        .replace(
+            /'/g,
+            "&#039;"
+        );
+
+}
+
+
+/* =========================================================
+   ERROR
+========================================================= */
+
+function showError(message) {
+
+    errorMessage.textContent =
+        message;
+
+    errorMessage.classList.add(
+        "show"
+    );
+
+
+    window.scrollTo({
+
+        top:
+            errorMessage
+                .getBoundingClientRect()
+                .top
+            + window.scrollY
+            - 100,
+
+        behavior: "smooth"
+
+    });
+
+}
+
+
+/* =========================================================
+   VALIDATION
+========================================================= */
+
+function validateForm() {
+
+    errorMessage.classList.remove(
+        "show"
+    );
+
+    errorMessage.textContent = "";
+
+
+    if (!clientName.value.trim()) {
+
+        showError(
+            "Please enter the Client Name."
+        );
+
+        clientName.focus();
+
+        return false;
+    }
+
+
+    if (!pocName.value.trim()) {
+
+        showError(
+            "Please enter the POC Name."
+        );
+
+        pocName.focus();
+
+        return false;
+    }
+
+
+    if (!mobile.value.trim()) {
+
+        showError(
+            "Please enter the Mobile Number."
+        );
+
+        mobile.focus();
+
+        return false;
+    }
+
+
+    if (!email.value.trim()) {
+
+        showError(
+            "Please enter the Email Address."
+        );
+
+        email.focus();
+
+        return false;
+    }
+
+
+    if (!email.validity.valid) {
+
+        showError(
+            "Please enter a valid Email Address."
+        );
+
+        email.focus();
+
+        return false;
+    }
+
+
+    if (!startDate.value) {
+
+        showError(
+            "Please select the Project Start Date."
+        );
+
+        startDate.focus();
+
+        return false;
+    }
+
+
+    if (!endDate.value) {
+
+        showError(
+            "The Project End Date could not be calculated."
+        );
+
+        return false;
+    }
+
+
+    if (!getSelectedPlan()) {
+
+        showError(
+            "Please select a plan."
+        );
+
+        return false;
+    }
+
+
+    return true;
+
+}
+
+
+/* =========================================================
+   GENERATE WORKFLOW
+========================================================= */
+
+generateButton.addEventListener(
+    "click",
+    function () {
+
+
+        if (!validateForm()) {
+
+            return;
+
+        }
+
+
+        const selectedPlan =
+            getSelectedPlan();
+
+
+        const plan =
+            workflows[selectedPlan];
+
+
+        const client =
+            escapeHTML(
+                clientName.value.trim()
+            );
+
+
+        const poc =
+            escapeHTML(
+                pocName.value.trim()
+            );
+
+
+        const phone =
+            escapeHTML(
+                mobile.value.trim()
+            );
+
+
+        const mail =
+            escapeHTML(
+                email.value.trim()
+            );
+
+
+        const start =
+            formatDisplayDate(
+                startDate.value
+            );
+
+
+        const end =
+            formatDisplayDate(
+                endDate.value
+            );
+
+
+        /* =================================================
+           BUILD WEEKS
+        ================================================= */
+
+        let weeksHTML = "";
+
+
+        plan.weeks.forEach(
+            function (week) {
+
+
+                let listHTML = "";
+
+
+                week.items.forEach(
+                    function (item) {
+
+                        listHTML +=
+                            `<li>${escapeHTML(item)}</li>`;
+
+                    }
+                );
+
+
+                weeksHTML += `
+
+                    <div class="week">
+
+                        <div class="week-title">
+
+                            ${escapeHTML(
+                                week.title
+                            )}
+
+                        </div>
+
+                        <ul>
+
+                            ${listHTML}
+
+                        </ul>
+
+                    </div>
+
+                `;
+
+            }
+        );
+
+
+        /* =================================================
+           BUILD DOCUMENT
+        ================================================= */
+
+        generatedResult.innerHTML = `
+
+            <div class="document-header">
+
+                <div class="document-brand">
+                    JSONS
+                </div>
+
+                <div class="document-title">
+
+                    JSONS PROJECT
+                    <span>WORKFLOW</span>
+
+                </div>
+
+            </div>
+
+
+            <div class="document-body">
+
+
+                <!-- CLIENT INFORMATION -->
+
+                <div class="client-info">
+
+
+                    <div class="client-item">
+
+                        <div class="client-label">
+                            Client Name
+                        </div>
+
+                        <div class="client-value">
+                            ${client}
+                        </div>
+
+                    </div>
+
+
+                    <div class="client-item">
+
+                        <div class="client-label">
+                            POC Name
+                        </div>
+
+                        <div class="client-value">
+                            ${poc}
+                        </div>
+
+                    </div>
+
+
+                    <div class="client-item">
+
+                        <div class="client-label">
+                            Mobile Number
+                        </div>
+
+                        <div class="client-value">
+                            ${phone}
+                        </div>
+
+                    </div>
+
+
+                    <div class="client-item">
+
+                        <div class="client-label">
+                            Email Address
+                        </div>
+
+                        <div class="client-value">
+                            ${mail}
+                        </div>
+
+                    </div>
+
+
+                    <div class="client-item">
+
+                        <div class="client-label">
+                            Project Start Date
+                        </div>
+
+                        <div class="client-value">
+                            ${start}
+                        </div>
+
+                    </div>
+
+
+                    <div class="client-item">
+
+                        <div class="client-label">
+                            Project End Date
+                        </div>
+
+                        <div class="client-value">
+                            ${end}
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- SELECTED PLAN -->
+
+                <div class="plan-banner">
+
+                    <div class="plan-banner-label">
+                        Selected Plan
+                    </div>
+
+                    <div class="plan-banner-name">
+
+                        ${escapeHTML(
+                            plan.name
+                        )}
+
+                    </div>
+
+                    <div class="plan-banner-price">
+
+                        ${escapeHTML(
+                            plan.price
+                        )}
+
+                    </div>
+
+                </div>
+
+
+                <!-- WORKFLOW HEADING -->
+
+                <div class="workflow-heading">
+
+                    <span>
+                        4 Weeks
+                    </span>
+
+                    Workflow
+
+                </div>
+
+
+                <!-- WEEKS -->
+
+                ${weeksHTML}
+
+
+                <!-- TOTAL -->
+
+                <div class="total">
+
+                    Total:
+
+                    ${escapeHTML(
+                        plan.total
+                    )}
+
+                </div>
+
+
+                <!-- DOCUMENT FOOTER -->
+
+                <div class="document-footer">
+
+                    <div class="grow">
+
+                        Ready to Grow Your Brand?
+
+                    </div>
+
+                    <p>
+
+                        Contact us :
+
+                        <strong>
+                            8610817060
+                        </strong>
+
+                    </p>
+
+                </div>
+
+
+            </div>
+
+        `;
+
+
+        /* =================================================
+           SHOW GENERATED RESULT
+        ================================================= */
+
+        generatedResult.classList.add(
+            "show"
+        );
+
+
+        generatedSection.style.display =
+            "block";
+
+
+        pdfArea.classList.add(
+            "show"
+        );
+
+
+        /* =================================================
+           SCROLL TO RESULT
+        ================================================= */
+
+        setTimeout(
+            function () {
+
+                generatedSection.scrollIntoView({
+                    behavior: "smooth",
+                    block: "start"
+                });
+
+            },
+            100
+        );
+
+    }
+);
+
+
+/* =========================================================
+   SAVE AS PDF
+========================================================= */
+
+pdfButton.addEventListener(
+    "click",
+    function () {
+
+        /*
+           Opens the browser print dialog.
+
+           Choose:
+
+           Destination:
+           Save as PDF
+
+           Then click Save.
+        */
+
+        window.print();
+
+    }
+);
+
+
+/* =========================================================
+   RESET
+========================================================= */
+
+resetButton.addEventListener(
+    "click",
+    function () {
+
+
+        clientName.value = "";
+
+        pocName.value = "";
+
+        mobile.value = "";
+
+        email.value = "";
+
+
+        startDate.value = "";
+
+        endDate.value = "";
+
+
+        document.getElementById(
+            "basic"
+        ).checked = true;
+
+
+        generatedResult.innerHTML =
+            "";
+
+
+        generatedResult.classList.remove(
+            "show"
+        );
+
+
+        generatedSection.style.display =
+            "none";
+
+
+        pdfArea.classList.remove(
+            "show"
+        );
+
+
+        errorMessage.classList.remove(
+            "show"
+        );
+
+
+        window.scrollTo({
+
+            top: 0,
+
+            behavior: "smooth"
+
+        });
+
+    }
+);
+
+
+/* =========================================================
+   ENTER KEY SUPPORT
+========================================================= */
+
+document.addEventListener(
+    "keydown",
+    function (event) {
+
+
+        if (
+            event.key === "Enter" &&
+            event.target.tagName !== "TEXTAREA"
+        ) {
+
+
+            if (
+
+                event.target === clientName ||
+
+                event.target === pocName ||
+
+                event.target === mobile ||
+
+                event.target === email
+
+            ) {
+
+
+                event.preventDefault();
+
+
+                generateButton.click();
+
+            }
+
+        }
+
+    }
+);
+
+</script>
+
 
 </body>
 </html>
