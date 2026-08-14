@@ -746,28 +746,14 @@ footer strong {
         color: black !important;
     }
 
-    /*
-       IMPORTANT:
-       Hide everything visually except the generated
-       client workflow.
-    */
-
     body * {
         visibility: hidden !important;
     }
-
-    /*
-       Show ONLY the generated workflow.
-    */
 
     #generatedSection,
     #generatedSection * {
         visibility: visible !important;
     }
-
-    /*
-       Position the PDF document at the very top.
-    */
 
     #generatedSection {
         display: block !important;
@@ -779,19 +765,9 @@ footer strong {
         padding: 0 !important;
     }
 
-    /*
-       Remove the website's "04 Generated Workflow"
-       heading from the PDF.
-    */
-
     #generatedSection > .section-title {
         display: none !important;
     }
-
-    /*
-       Remove unnecessary screen styling around
-       the document for the PDF.
-    */
 
     #generatedResult {
         display: block !important;
@@ -812,10 +788,6 @@ footer strong {
         background: white !important;
         overflow: visible !important;
     }
-
-    /*
-       Client-facing PDF title.
-    */
 
     .document-header {
         background: white !important;
@@ -841,17 +813,9 @@ footer strong {
         color: var(--orange) !important;
     }
 
-    /*
-       Document body.
-    */
-
     .document-body {
         padding: 0 !important;
     }
-
-    /*
-       Client information.
-    */
 
     .client-info {
         display: grid !important;
@@ -885,10 +849,6 @@ footer strong {
         color: black !important;
     }
 
-    /*
-       Selected plan.
-    */
-
     .plan-banner {
         background: #fff4ef !important;
         border-left: 5px solid var(--orange) !important;
@@ -912,10 +872,6 @@ footer strong {
         color: #555 !important;
     }
 
-    /*
-       "4 weeks workflow:"
-    */
-
     .workflow-heading {
         font-size: 22px !important;
         margin: 20px 0 14px !important;
@@ -925,10 +881,6 @@ footer strong {
     .workflow-heading span {
         color: var(--orange) !important;
     }
-
-    /*
-       Weekly workflow boxes.
-    */
 
     .week {
         border: 1px solid #cccccc !important;
@@ -957,10 +909,6 @@ footer strong {
         color: black !important;
     }
 
-    /*
-       Total.
-    */
-
     .total {
         padding: 13px 16px !important;
         margin-top: 16px !important;
@@ -971,10 +919,6 @@ footer strong {
         break-inside: avoid !important;
         page-break-inside: avoid !important;
     }
-
-    /*
-       Client-facing final message.
-    */
 
     .document-footer {
         margin-top: 25px !important;
@@ -1000,18 +944,10 @@ footer strong {
         color: var(--orange) !important;
     }
 
-    /*
-       Absolutely no logo / watermark in PDF.
-    */
-
     .watermark,
     .watermark img {
         display: none !important;
     }
-
-    /*
-       No browser-generated website footer/header elements.
-    */
 
     header,
     footer,
@@ -1021,11 +957,6 @@ footer strong {
     }
 
 }
-
-
-/* =========================================================
-   END CSS
-========================================================= */
 
 </style>
 
@@ -1037,9 +968,6 @@ footer strong {
 
 <!-- ========================================================
      WATERMARK
-     
-     This is visible ONLY on the website.
-     It will NOT appear in the PDF.
 ========================================================= -->
 
 <div class="watermark">
@@ -1085,7 +1013,6 @@ footer strong {
 
 <!-- ========================================================
      SECTION 01
-     CLIENT INFORMATION
 ========================================================= -->
 
 <section class="section">
@@ -1181,7 +1108,6 @@ footer strong {
 
 <!-- ========================================================
      SECTION 02
-     PROJECT DATES
 ========================================================= -->
 
 <section class="section">
@@ -1247,7 +1173,7 @@ footer strong {
 
 <!-- ========================================================
      SECTION 03
-     PLAN SELECTION
+     UPDATED PLAN DETAILS
 ========================================================= -->
 
 <section class="section">
@@ -1268,7 +1194,9 @@ footer strong {
     <div class="plans">
 
 
-        <!-- BASIC -->
+        <!-- =================================================
+             BASIC PLAN
+        ================================================== -->
 
         <div>
 
@@ -1321,7 +1249,9 @@ footer strong {
         </div>
 
 
-        <!-- ADVANCED -->
+        <!-- =================================================
+             ADVANCED PLAN
+        ================================================== -->
 
         <div>
 
@@ -1362,10 +1292,11 @@ footer strong {
 
                 <div class="plan-description">
 
-                    16 Posts + 8 Reels +
+                    8 Posts + 4 Reels +
                     Social Media +
+                    Chat Automation +
                     Google My Business +
-                    Meta Ads + Leads
+                    Meta Ads
 
                 </div>
 
@@ -1374,7 +1305,9 @@ footer strong {
         </div>
 
 
-        <!-- PREMIUM -->
+        <!-- =================================================
+             PREMIUM PLAN
+        ================================================== -->
 
         <div>
 
@@ -1415,7 +1348,11 @@ footer strong {
 
                 <div class="plan-description">
 
-                    Complete marketing package +
+                    8 Posts + 4 Reels +
+                    Social Media +
+                    Chat Automation +
+                    Google My Business +
+                    Meta Ads +
                     Website / Webpage Development
 
                 </div>
@@ -1451,7 +1388,6 @@ footer strong {
 
 <!-- ========================================================
      SECTION 04
-     GENERATED WORKFLOW
 ========================================================= -->
 
 <section
@@ -1479,7 +1415,7 @@ footer strong {
         class="workflow-document"
     >
 
-        <!-- JavaScript creates the client workflow here -->
+        <!-- JavaScript creates the workflow here -->
 
     </div>
 
@@ -1562,11 +1498,15 @@ footer strong {
 
 
 /* =========================================================
-   WORKFLOW DATA
+   UPDATED WORKFLOW DATA
 ========================================================= */
 
 const workflows = {
 
+
+    /* =====================================================
+       BASIC PLAN
+    ====================================================== */
 
     basic: {
 
@@ -1575,7 +1515,7 @@ const workflows = {
         price: "₹5,000 / month",
 
         total:
-            "8 Posts + 4 Reels + Social Media Management + Chat Automation",
+            "8 Posts + 4 Reels + Instagram & Facebook Management + Chat Automation",
 
         weeks: [
 
@@ -1592,7 +1532,7 @@ const workflows = {
 
                     "Create and publish 1 Reel.",
 
-                    "Review/optimize Instagram & Facebook profiles.",
+                    "Review and optimize Instagram & Facebook profiles.",
 
                     "Set up or review basic chat automation for common customer questions."
 
@@ -1601,7 +1541,7 @@ const workflows = {
 
 
             {
-                title: "Week 2 — Consistent Content & Engagement",
+                title: "Week 2 — Content & Engagement",
 
                 items: [
 
@@ -1613,7 +1553,7 @@ const workflows = {
 
                     "Manage Instagram & Facebook activity.",
 
-                    "Check whether customers are responding to automated chat messages.",
+                    "Monitor customer responses to automated chat messages.",
 
                     "Make minor content adjustments based on engagement."
 
@@ -1630,7 +1570,7 @@ const workflows = {
 
                     "Create and publish 1 Reel.",
 
-                    "Continue social media management.",
+                    "Continue Instagram & Facebook management.",
 
                     "Monitor audience engagement, comments and inquiries.",
 
@@ -1657,7 +1597,7 @@ const workflows = {
 
                     "Review monthly content performance.",
 
-                    "Identify the best-performing posts/Reels and prepare ideas for the next month."
+                    "Identify the best-performing posts and Reels and prepare ideas for the next month."
 
                 ]
             }
@@ -1667,6 +1607,10 @@ const workflows = {
     },
 
 
+    /* =====================================================
+       ADVANCED PLAN
+    ====================================================== */
+
     advanced: {
 
         name: "Advanced Plan",
@@ -1674,12 +1618,12 @@ const workflows = {
         price: "₹7,500 / month",
 
         total:
-            "16 Posts + 8 Reels + Social Media + Chat Automation + Google My Business + Meta Reel Ads + Leads Management",
+            "8 Posts + 4 Reels + Social Media + Chat Automation + Google My Business + Meta Ads",
 
         weeks: [
 
             {
-                title: "Week 1 — Strategy, Content & Lead Setup",
+                title: "Week 1 — Strategy, Content & Setup",
 
                 items: [
 
@@ -1687,15 +1631,15 @@ const workflows = {
 
                     "Prepare the monthly content strategy.",
 
-                    "Create and publish 4 posts.",
+                    "Create and publish 2 posts.",
 
-                    "Create and publish 2 Reels.",
+                    "Create and publish 1 Reel.",
 
-                    "Optimize/manage Instagram & Facebook.",
+                    "Manage Instagram & Facebook.",
 
                     "Review and configure Chat Automation.",
 
-                    "Optimize/update Google My Business.",
+                    "Optimize and update Google My Business.",
 
                     "Prepare the first Reel for Meta Ads.",
 
@@ -1710,21 +1654,21 @@ const workflows = {
 
                 items: [
 
-                    "Create and publish 4 posts.",
+                    "Create and publish 2 posts.",
 
-                    "Create and publish 2 Reels.",
+                    "Create and publish 1 Reel.",
 
                     "Monitor Instagram & Facebook engagement.",
 
                     "Monitor Google My Business activity.",
 
-                    "Run/monitor Meta Reel Ads.",
+                    "Run and monitor Meta Ads.",
 
                     "Check incoming leads.",
 
                     "Organize leads and follow up according to the agreed process.",
 
-                    "Review chat automation performance."
+                    "Review Chat Automation performance."
 
                 ]
             },
@@ -1735,19 +1679,19 @@ const workflows = {
 
                 items: [
 
-                    "Create and publish 4 posts.",
+                    "Create and publish 2 posts.",
 
-                    "Create and publish 2 Reels.",
+                    "Create and publish 1 Reel.",
 
                     "Review engagement and audience response.",
 
-                    "Optimize Meta Reel Ads based on performance.",
+                    "Optimize Meta Ads based on performance.",
 
                     "Monitor Google My Business.",
 
                     "Manage incoming leads.",
 
-                    "Identify frequently asked customer questions and improve chat automation.",
+                    "Identify frequently asked customer questions and improve Chat Automation.",
 
                     "Adjust upcoming content based on performance."
 
@@ -1756,13 +1700,13 @@ const workflows = {
 
 
             {
-                title: "Week 4 — Final Content + Monthly Reporting",
+                title: "Week 4 — Final Content + Monthly Review",
 
                 items: [
 
-                    "Create and publish 4 posts.",
+                    "Create and publish 2 posts.",
 
-                    "Create and publish 2 Reels.",
+                    "Create and publish 1 Reel.",
 
                     "Continue Instagram & Facebook management.",
 
@@ -1784,6 +1728,10 @@ const workflows = {
     },
 
 
+    /* =====================================================
+       PREMIUM PLAN
+    ====================================================== */
+
     premium: {
 
         name: "Premium Plan",
@@ -1791,7 +1739,7 @@ const workflows = {
         price: "₹9,999 / month",
 
         total:
-            "16 Posts + 8 Reels + Social Media + Chat Automation + Google My Business + Meta Reel Ads + Leads Management + Webpage/Website Development",
+            "8 Posts + 4 Reels + Social Media + Chat Automation + Google My Business + Meta Ads + Website / Webpage Development",
 
         weeks: [
 
@@ -1804,21 +1752,21 @@ const workflows = {
 
                     "Prepare the monthly social media strategy.",
 
-                    "Create and publish 4 posts.",
+                    "Create and publish 2 posts.",
 
-                    "Create and publish 2 Reels.",
+                    "Create and publish 1 Reel.",
 
                     "Manage Instagram & Facebook.",
 
-                    "Set up/review Chat Automation.",
+                    "Set up or review Chat Automation.",
 
                     "Optimize Google My Business.",
 
-                    "Plan Meta Reel Ads.",
+                    "Plan Meta Ads.",
 
                     "Set up lead management.",
 
-                    "Website/Webpage: collect required business information, images, logo, services, contact details and decide the website structure."
+                    "Website/Webpage: collect required business information, images, logo, services and contact details and decide the website structure."
 
                 ]
             },
@@ -1829,21 +1777,21 @@ const workflows = {
 
                 items: [
 
-                    "Create and publish 4 posts.",
+                    "Create and publish 2 posts.",
 
-                    "Create and publish 2 Reels.",
+                    "Create and publish 1 Reel.",
 
                     "Manage Instagram & Facebook.",
 
                     "Monitor Google My Business.",
 
-                    "Start/continue Meta Reel Ads.",
+                    "Start and monitor Meta Ads.",
 
                     "Monitor and organize incoming leads.",
 
-                    "Optimize chat automation.",
+                    "Optimize Chat Automation.",
 
-                    "Website/Webpage: develop the main pages/sections such as Home, About, Services, Contact, etc."
+                    "Website/Webpage: develop the main pages and sections such as Home, About, Services and Contact."
 
                 ]
             },
@@ -1854,19 +1802,19 @@ const workflows = {
 
                 items: [
 
-                    "Create and publish 4 posts.",
+                    "Create and publish 2 posts.",
 
-                    "Create and publish 2 Reels.",
+                    "Create and publish 1 Reel.",
 
                     "Monitor social media engagement.",
 
-                    "Optimize Meta Reel Ads.",
+                    "Optimize Meta Ads.",
 
                     "Monitor Google My Business.",
 
                     "Manage leads and customer inquiries.",
 
-                    "Review chat automation.",
+                    "Review Chat Automation.",
 
                     "Website/Webpage: add content, images, contact/lead forms and make responsive/mobile adjustments.",
 
@@ -1881,19 +1829,19 @@ const workflows = {
 
                 items: [
 
-                    "Create and publish 4 posts.",
+                    "Create and publish 2 posts.",
 
-                    "Create and publish 2 Reels.",
+                    "Create and publish 1 Reel.",
 
                     "Continue Instagram & Facebook management.",
 
                     "Monitor Google My Business.",
 
-                    "Review and optimize Meta Reel Ads.",
+                    "Review and optimize Meta Ads.",
 
                     "Manage and organize monthly leads.",
 
-                    "Review chat automation.",
+                    "Review Chat Automation.",
 
                     "Website/Webpage: complete agreed revisions, final testing and prepare the website/page for launch or handover.",
 
@@ -2356,10 +2304,6 @@ generateButton.addEventListener(
             <div class="workflow-document">
 
 
-                <!-- =========================================
-                     PDF TITLE
-                ========================================== -->
-
                 <div class="document-header">
 
                     <div class="document-title">
@@ -2374,9 +2318,7 @@ generateButton.addEventListener(
                 <div class="document-body">
 
 
-                    <!-- =====================================
-                         CLIENT INFORMATION
-                    ====================================== -->
+                    <!-- CLIENT INFORMATION -->
 
                     <div class="client-info">
 
@@ -2462,9 +2404,7 @@ generateButton.addEventListener(
                     </div>
 
 
-                    <!-- =====================================
-                         SELECTED PLAN
-                    ====================================== -->
+                    <!-- SELECTED PLAN -->
 
                     <div class="plan-banner">
 
@@ -2491,9 +2431,7 @@ generateButton.addEventListener(
                     </div>
 
 
-                    <!-- =====================================
-                         WORKFLOW
-                    ====================================== -->
+                    <!-- WORKFLOW -->
 
                     <div class="workflow-heading">
 
@@ -2509,9 +2447,7 @@ generateButton.addEventListener(
                     ${weeksHTML}
 
 
-                    <!-- =====================================
-                         TOTAL
-                    ====================================== -->
+                    <!-- TOTAL -->
 
                     <div class="total">
 
@@ -2523,9 +2459,7 @@ generateButton.addEventListener(
                     </div>
 
 
-                    <!-- =====================================
-                         FINAL CLIENT MESSAGE
-                    ====================================== -->
+                    <!-- FINAL CLIENT MESSAGE -->
 
                     <div class="document-footer">
 
@@ -2603,13 +2537,6 @@ generateButton.addEventListener(
 pdfButton.addEventListener(
     "click",
     function () {
-
-        /*
-           Browser's native print/PDF system.
-
-           The special @media print CSS above makes sure
-           ONLY the client-facing workflow is printed.
-        */
 
         window.print();
 
